@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="36"
+   height="36"
+   viewBox="0 0 9.5249998 9.5249999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="ACCCS TGT.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="11.930303"
+     inkscape:cx="14.710439"
+     inkscape:cy="22.631445"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g6985">
+      <path
+         style="fill:#ff0000;fill-opacity:0;stroke:#ff0000;stroke-width:1.99999997;stroke-dasharray:none;stroke-opacity:0.958498;paint-order:fill markers stroke"
+         d="m 0.04435484,4.7428764 c 0.08870968,0 9.46975796,1e-7 9.46975796,1e-7"
+         id="path363"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:#ff0000;fill-opacity:0;stroke:#ff0000;stroke-width:1.99999997;stroke-dasharray:none;stroke-opacity:0.958498;paint-order:fill markers stroke"
+         d="M 4.7016128,0.02217742 V 9.5141128"
+         id="path412"
+         sodipodi:nodetypes="cc" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,218 @@
+/* Logo */
+
+.logo-left , .logo-right{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-top: -5px;
+}
+
+/* Navbar text */
+
+.navbar-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 1%;
+}
+
+
+.user-name{
+  font-size: small;
+}
+
+/* navbar */
+.navbar{
+  width: 1040px;
+}
+
+/* date and time */
+
+.date-icon , .time-icon, .chat-icon{
+  font-size: 1.3rem;
+  width: max-content;
+  color: rgb(128, 128, 128);
+  margin-left: 3rem;
+  padding-left: 3rem;
+}
+
+.date-icon:hover , .time-icon:hover ,
+.chat-icon:hover {
+  color:  rgba(255,255,255,.75);
+}
+
+.side-icon {
+  font-size: 0.9rem;
+  margin: 0% 1%;
+}
+
+.user_data {
+  position: absolute;
+  right: 6%;
+  bottom: 5%;
+  width: 20%;
+  height: 90%;
+  /* background-color: aliceblue; */
+  display: flex;
+  align-items: center;
+  color: aliceblue;
+  justify-content: flex-end;
+}
+
+/* Admin text */
+.admin-text{
+  color: rgb(128, 128, 128); 
+  margin-bottom: 0px; 
+  margin-left: 3rem;
+  margin-right: 0.5rem; 
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.admin-text:hover{
+  color:  rgba(255,255,255,.75);
+}
+
+/* Admin icon */
+
+.admin-icon { 
+    color: rgb(128, 128, 128); 
+    padding: 5px; 
+    border-radius: 50%; 
+    border: 1px solid rgb(128, 128, 128);
+    transition: transform .2s;
+}
+  
+/* hover effect  */
+.admin-icon:hover {
+    color: rgba(255,255,255,.75);
+    transform: scale(1.1);
+}
+
+.admin-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+} */
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item{
+    text-align: center;
+    padding: 5%;
+}
+
+.dropdown-menu {
+  right: auto;
+  left: -245%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  top: 100%;
+  /* right: 0; */
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.side-icon{
+    color: white; 
+    padding: 2.2%; 
+    border-radius: 50%; 
+    /* transition: transform .2s;  */
+    /* border: 1px solid white; */
+}
+
+.top-div{
+  margin-top: 0.6%;
+}
+
+.navbar-expand-lg{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: #f8f8f8;
+}
+
+/* username hover */
+/* Style the main div */
+.user_data {
+  cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 75%; /* Position below the user_data div */
+  right: 0; /* Align to the right */
+  background-color: grey;
+  width: 150px;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  color: white;
+}
+
+/* Style the logout icon */
+.logout-icon {
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+/* Style the logout text */
+.logout-text {
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.dropdown-content:hover{
+  background-color: crimson;
+}
+/* .logout-icon:hover,
+.logout-text:hover {
+  color: #ff4d4d;
+} */
+
+/* Show dropdown on hover */
+.user_data:hover .dropdown-content {
+  display: flex;
+}
+
+@media (min-width: 1200px){
+
+  .navbar{
+    width: 1900px;
+  }
+
+  .navbar-text{
+    font-size: 2rem;
+}
+
+.side-icon {
+  font-size: 1.3rem;
+}
+
+
+.user-name{
+  font-size: medium;
+}
+
+
+
+}

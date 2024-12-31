@@ -1,0 +1,29 @@
+<!-- SIDEBAR -->
+
+<div class="d-flex flex-column flex-shrink-0 h-100 sidebar-container" style="width: 5rem;background-color: #ffffff;">
+    
+  <ul class="nav nav-pills nav-flush flex-column mb-auto text-center" style="margin-top: 50%;">
+
+    
+    
+  <li class="nav-item" >
+    <a  class="nav-link rounded-0" data-toggle="tooltip" data-placement="right">
+      <fa-icon [icon]="faIdCard" class="side-icon" [class.nav_active]="navActive == 'dashboard'?true:false"></fa-icon><div class="nav-head" [class.nav_active_text]="navActive == 'dashboard'?true:false">DASHBOARD</div>
+      <div class="dropdown" (click)="toggleDropdown(1, $event)" (mouseleave)="mouseOut()">
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1"
+         [class.show]="dropdownVisible === 1">
+          <li class="dropdown-item" (click)="admDashboard()" *ngIf="level == '' ">ADMIN DASHBOARD</li>
+          <li class="dropdown-item"  (click)="navDashboard()">USER DASHBOARD</li>
+        </ul>
+      </div>
+    </a>
+  </li>
+
+
+    
+    
+  </ul>
+
+</div>
+  
