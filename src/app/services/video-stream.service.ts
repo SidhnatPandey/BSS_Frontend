@@ -11,4 +11,7 @@ export class VideoStreamService {
   getVideoFeed(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/video_feed`);
   }
+  getMetaData(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/metadata`);
+  }
 }
