@@ -1,84 +1,24 @@
-<!-- drag drop appraoch -->
-<!-- <mat-grid-list cols="10" rowHeight="1:0.42" gutterSize="5px" class="main-grid">
-  <mat-grid-tile
-    colspan="8"
-    rowspan="8"
-    class="center-content"
-    cdkDropList
-    (cdkDropListDropped)="onDrop($event)"
-  >
-    <p *ngIf="!droppedSensor">Drag and drop a sensor here</p>
-    <div *ngIf="droppedSensor">
-      <h4>{{ droppedSensor?.name }}</h4>
-      <p>{{ droppedSensor?.data }}</p>
-    </div>
-  </mat-grid-tile>
-
-  <mat-grid-tile colspan="2" rowspan="8" class="metadata">
-    <div>
-      <h4>Live MetaData</h4>
-    </div>
-  </mat-grid-tile>
-
-  <mat-grid-tile
-    colspan="2"
-    rowspan="3"
-    class="footer"
-    cdkDrag
-    [cdkDragData]="{ name: 'Sensor1', data: 'Live data from Sensor1' }"
-  >
-    <p>Sensor1</p>
-  </mat-grid-tile>
-  <mat-grid-tile
-    colspan="2"
-    rowspan="3"
-    class="footer"
-    cdkDrag
-    [cdkDragData]="{ name: 'Sensor2', data: 'Live data from Sensor2' }"
-  >
-    <p>Sensor2</p>
-  </mat-grid-tile>
-  <mat-grid-tile
-    colspan="2"
-    rowspan="3"
-    class="footer"
-    cdkDrag
-    [cdkDragData]="{ name: 'Sensor3', data: 'Live data from Sensor3' }"
-  >
-    <p>Sensor3</p>
-  </mat-grid-tile>
-  <mat-grid-tile
-    colspan="2"
-    rowspan="3"
-    class="footer"
-    cdkDrag
-    [cdkDragData]="{ name: 'Sensor4', data: 'Live data from Sensor4' }"
-  >
-    <p>Sensor4</p>
-  </mat-grid-tile>
-
-  <mat-grid-tile colspan="2" rowspan="3" class="map">
-    <h4>India Map With Coordinates</h4>
-    <app-ind-map></app-ind-map>
-  </mat-grid-tile>
-</mat-grid-list> -->
-
-<mat-grid-list cols="10" rowHeight="1:0.42" gutterSize="5px" class="main-grid">
-  <mat-grid-tile colspan="8" rowspan="8" class="center-content">
-    <p *ngIf="!selectedSensor">Click on a sensor to see its data</p>
-    <div *ngIf="selectedSensor">
+<mat-grid-list cols="12" rowHeight="1:0.5" gutterSize="5px" class="main-grid">
+  <mat-grid-tile colspan="9" rowspan="8" class="center-content">
+    <!-- <div *ngIf="selectedSensor">
       <h4>{{ selectedSensor?.name }}</h4>
       <p>{{ selectedSensor?.data }}</p>
-    </div>
+    </div> -->
+    <img [src]="videoStreamUrl" alt="Live Stream" />
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="2" rowspan="8" class="metadata">
+  <mat-grid-tile colspan="3" rowspan="7" class="metadata">
     <div>
       <h4>Live MetaData</h4>
     </div>
   </mat-grid-tile>
+
+  <mat-grid-tile colspan="3" rowspan="4" class="map">
+    <!-- <h4>India Map With Coordinates</h4> -->
+    <app-ind-map></app-ind-map>
+  </mat-grid-tile>
   <mat-grid-tile
-    colspan="2"
+    colspan="3"
     rowspan="3"
     class="footer"
     [ngClass]="{ highlighted: selectedSensor?.name === 'Sensor1' }"
@@ -87,7 +27,7 @@
     <p>Sensor1</p>
   </mat-grid-tile>
   <mat-grid-tile
-    colspan="2"
+    colspan="3"
     rowspan="3"
     class="footer"
     [ngClass]="{ highlighted: selectedSensor?.name === 'Sensor2' }"
@@ -96,26 +36,12 @@
     <p>Sensor2</p>
   </mat-grid-tile>
   <mat-grid-tile
-    colspan="2"
+    colspan="3"
     rowspan="3"
     class="footer"
     [ngClass]="{ highlighted: selectedSensor?.name === 'Sensor3' }"
     (click)="selectSensor({ name: 'Sensor3', data: 'Live data from Sensor3' })"
   >
     <p>Sensor3</p>
-  </mat-grid-tile>
-  <mat-grid-tile
-    colspan="2"
-    rowspan="3"
-    class="footer"
-    [ngClass]="{ highlighted: selectedSensor?.name === 'Sensor4' }"
-    (click)="selectSensor({ name: 'Sensor4', data: 'Live data from Sensor4' })"
-  >
-    <p>Sensor4</p>
-  </mat-grid-tile>
-
-  <mat-grid-tile colspan="2" rowspan="3" class="map">
-    <!-- <h4>India Map With Coordinates</h4> -->
-    <app-ind-map></app-ind-map>
   </mat-grid-tile>
 </mat-grid-list>
