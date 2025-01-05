@@ -1,18 +1,20 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 // moduels
 import { MatGridListModule } from "@angular/material/grid-list";
-import { CdkDragDrop, DragDropModule } from "@angular/cdk/drag-drop";
-
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { HttpClientModule } from '@angular/common/http';
+ 
 //components
 import { IndMapComponent } from "../ind-map/ind-map.component";
 import { LiveFeedComponent } from "../live-feed/live-feed.component";
 import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { CommonModule } from "@angular/common";
+import { VideoStreamService } from "../../services/video-stream.service";
 
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
-  imports: [
+  imports: [HttpClientModule,
     CommonModule,
     MatGridListModule,
     DragDropModule,
@@ -20,18 +22,25 @@ import { CommonModule } from "@angular/common";
     LiveFeedComponent,
     MetaDataComponent,
   ],
+  providers: [VideoStreamService],
   templateUrl: "./live-feed-wrapper.component.html",
   styleUrl: "./live-feed-wrapper.component.css",
 })
-export class LiveFeedWrapperComponent {
-  //droppedSensor: { name: string; data: string } | null = null;
-
+export class LiveFeedWrapperComponent implements OnInit {
   selectedSensor: { name: string; data: string } | null = null;
 
-  /*  onDrop(event: CdkDragDrop<any>) {
-    this.droppedSensor = event.item.data;
-    event.previousContainer.data = event.previousContainer.data;
-  } */
+  constructor(private videoStreamService: VideoStreamService) {
+
+  }
+  
+  ngOnInit() {
+    this.videoStreamService.getVideoFeed().subscribe((res) => {
+      console.log(res);
+    })
+  }
+
+
+
 
   selectSensor(sensor: { name: string; data: string }) {
     this.selectedSensor = sensor;
