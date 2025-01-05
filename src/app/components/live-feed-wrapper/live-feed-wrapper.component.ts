@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { HttpClientModule } from "@angular/common/http";
+import { MatCardModule } from '@angular/material/card';
 
 //components
 import { IndMapComponent } from "../ind-map/ind-map.component";
@@ -10,13 +11,13 @@ import { LiveFeedComponent } from "../live-feed/live-feed.component";
 import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { CommonModule } from "@angular/common";
 import { VideoStreamService } from "../../services/video-stream.service";
-import Hls from "hls.js";
 
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
   imports: [
     HttpClientModule,
+    MatCardModule,
     CommonModule,
     MatGridListModule,
     DragDropModule,

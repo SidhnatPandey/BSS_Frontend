@@ -23,7 +23,7 @@
   padding: 16px;
   background-color: #fafafa;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
 }
 
@@ -52,10 +52,44 @@
   font-weight: bold;
 }
 
-img {
-  width: 100%;
-  /*  max-width: 800px; */
-  height: 100%;
-  /* border: 2px solid #ccc;
-  border-radius: 8px; */
+.metadata {
+  padding: 16px;
 }
+
+.meta {
+  font-size: larger;
+}
+
+.notification {
+  margin-bottom: 8px;
+  color: white;
+  padding: 8px;
+}
+
+.notification.red {
+  background-color: #d32f2f;
+}
+
+.notification.green {
+  background-color: #388e3c;
+}
+
+.summary {
+  margin-top: 16px;
+}
+
+.sensors {
+  margin-top: 16px;
+  display: flex;
+  /* padding: 1rem; */
+  font-size: large;
+  /* flex-direction: row; */
+}
+
+.child-sensor{
+  max-width: 7rem;
+  margin-right: 0.75rem;
+}
+
+
+
