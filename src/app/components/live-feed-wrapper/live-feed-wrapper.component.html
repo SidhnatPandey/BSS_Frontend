@@ -1,10 +1,10 @@
-<mat-grid-list cols="12" rowHeight="1:0.5" gutterSize="5px" class="main-grid">
+<mat-grid-list cols="12" rowHeight="fit" gutterSize="3px" class="main-grid">
   <mat-grid-tile colspan="9" rowspan="8" class="center-content">
     <!-- <div *ngIf="selectedSensor">
       <h4>{{ selectedSensor?.name }}</h4>
       <p>{{ selectedSensor?.data }}</p>
     </div> -->
-    <img [src]="videoStreamUrl" alt="Live Stream" />
+    <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
   </mat-grid-tile>
 
   <mat-grid-tile colspan="3" rowspan="6" class="metadata">
@@ -24,61 +24,66 @@
           Time: 1125 Hrs | Location: xyz | Coordinates: 123
         </mat-card> -->
       </div>
-    
+
       <!-- Enemy Movement Summary -->
       <div class="summary">
         <p>
-          <strong>Enemy movement summary:</strong> soldiers detected by multiple optical sensors at &lt;location&gt;
-        </p> 
-        <p>
-          <strong>DRONE ></strong> Tracking 10 enemy personnel
+          <strong>Enemy movement summary:</strong> soldiers detected by multiple
+          optical sensors at &lt;location&gt;
         </p>
+        <p><strong>DRONE ></strong> Tracking 10 enemy personnel</p>
       </div>
       <!-- Sensor Details -->
       <div class="sensors">
         <div class="child-sensor">
-          <h5 style="font-weight: bold;">PTZ</h5>
-          <p>10 soldiers in field of view Start Time<br /> End Time</p>
+          <h5 style="font-weight: bold">PTZ</h5>
+          <p>
+            10 soldiers in field of view Start Time<br />
+            End Time
+          </p>
         </div>
         <div class="child-sensor">
-          <h5 style="font-weight: bold;">RAJAK</h5>
-          <p>3 soldiers in field of view Start Time<br /> End Time</p>
+          <h5 style="font-weight: bold">RAJAK</h5>
+          <p>
+            3 soldiers in field of view Start Time<br />
+            End Time
+          </p>
         </div>
         <div class="child-sensor">
-          <h5 style="font-weight: bold;">HSTI</h5>
-          <p>1 soldier in field of view Start Time<br /> End Time</p>
+          <h5 style="font-weight: bold">HSTI</h5>
+          <p>
+            1 soldier in field of view Start Time<br />
+            End Time
+          </p>
         </div>
       </div>
     </div>
   </mat-grid-tile>
 
-
   <mat-grid-tile colspan="3" rowspan="1" class="metabutton-container">
     <div class="alignBtnColumn">
-    <div class="mission-header header">
-      <span class="mission-title">MISSION CONTROL</span>
-      <span class="mission-details">
-        Active Mission: NA | Location: NA | Coordinates: &lt;&gt;
-      </span>
-      <button mat-raised-button color="accent" class="target-lock-btn">
-        TARGET LOCK
-      </button>
+      <div class="mission-header header">
+        <span class="mission-title">MISSION CONTROL</span>
+        <span class="mission-details">
+          Active Mission: NA | Location: NA | Coordinates: &lt;&gt;
+        </span>
+        <button mat-raised-button color="accent" class="target-lock-btn">
+          TARGET LOCK
+        </button>
+      </div>
+      <div class="metabutton-group">
+        <button mat-raised-button color="warn" class="mission-btn">
+          🚀 LAUNCH DRONE RECON MISSION
+        </button>
+        <button mat-raised-button color="primary" class="mission-btn">
+          ❌ ABORT DRONE RECON MISSION
+        </button>
+        <button mat-raised-button color="success" class="mission-btn">
+          💀 LAUNCH DRONE INTERCEPTOR
+        </button>
+      </div>
     </div>
-    <div class="metabutton-group">
-      <button mat-raised-button color="warn" class="mission-btn">
-        🚀 LAUNCH DRONE RECON MISSION
-      </button>
-      <button mat-raised-button color="primary" class="mission-btn">
-        ❌ ABORT DRONE RECON MISSION
-      </button>
-      <button mat-raised-button color="success" class="mission-btn">
-        💀 LAUNCH DRONE INTERCEPTOR
-      </button>
-    </div>
-  </div>
   </mat-grid-tile>
-  
-  
 
   <mat-grid-tile colspan="3" rowspan="4" class="map">
     <!-- <h4>India Map With Coordinates</h4> -->
@@ -91,7 +96,7 @@
     [ngClass]="{ highlighted: selectedSensor?.name === 'RAJAK' }"
     (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
   >
-  <img [src]="videoStreamUrlRajak" alt="Live Stream" />
+    <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video" />
   </mat-grid-tile>
   <mat-grid-tile
     colspan="3"
@@ -100,7 +105,7 @@
     [ngClass]="{ highlighted: selectedSensor?.name === 'PTZ' }"
     (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })"
   >
-  <img [src]="videoStreamUrlPtz" alt="Live Stream" />
+    <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video" />
   </mat-grid-tile>
   <mat-grid-tile
     colspan="3"
@@ -109,6 +114,6 @@
     [ngClass]="{ highlighted: selectedSensor?.name === 'HHT1' }"
     (click)="selectSensor({ name: 'HHT1', data: 'Live data from HHT1' })"
   >
-    <img [src]="videoStreamUrlHhti" alt="Live Stream" />
+    <img [src]="videoStreamUrlHhti" alt="Live Stream" class="video" />
   </mat-grid-tile>
 </mat-grid-list>

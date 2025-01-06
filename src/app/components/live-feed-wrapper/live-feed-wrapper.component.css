@@ -1,5 +1,5 @@
 .main-grid {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
 }
 
@@ -37,6 +37,10 @@
   transition: background-color 0.3s ease;
 }
 
+.video {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
 /* .footer:hover {
   background-color: #d5c8c8;
 } */
@@ -86,12 +90,10 @@
   /* flex-direction: row; */
 }
 
-.child-sensor{
+.child-sensor {
   max-width: 7rem;
   margin-right: 0.75rem;
 }
-
-
 
 /* Container for mission control */
 .metabutton-container {
@@ -175,7 +177,29 @@
   color: white;
 }
 
-.alignBtnColumn{
+.alignBtnColumn {
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 1280px) and (max-width: 1660px) {
+  .meta .notification {
+    margin-bottom: 10px;
+    font-size: 12px; /* Adjust text size */
+  }
+
+  /* Enemy Movement Summary adjustments */
+  .meta .summary p {
+    font-size: 14px; /* Adjust text size */
+    line-height: 1.5;
+  }
+
+  .meta .child-sensor h5 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .meta .child-sensor p {
+    font-size: 14px;
+  }
 }
