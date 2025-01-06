@@ -9,7 +9,7 @@ import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { CommonModule } from "@angular/common";
 import { VideoStreamService } from "../../services/video-stream.service";
 import { JsonPipe } from '@angular/common';
-
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
@@ -22,7 +22,8 @@ import { JsonPipe } from '@angular/common';
     IndMapComponent,
     LiveFeedComponent,
     MetaDataComponent,
-    JsonPipe
+    JsonPipe,
+    MatButtonModule
   ],
   providers: [VideoStreamService],
   templateUrl: "./live-feed-wrapper.component.html",

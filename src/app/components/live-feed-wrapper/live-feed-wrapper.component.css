@@ -93,3 +93,89 @@
 
 
 
+/* Container for mission control */
+.metabutton-container {
+  background-color: #1f1f1f;
+  color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styling */
+.mission-header {
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mission-header .mission-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mission-header .mission-details {
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.target-lock-btn {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+}
+
+/* Button group styling */
+.metabutton-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+}
+
+.mission-btn {
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  padding: 0.8rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mission-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Specific button colors */
+.mission-btn[color="warn"] {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.mission-btn[color="primary"] {
+  background-color: #1976d2;
+  color: white;
+}
+
+.mission-btn[color="success"] {
+  background-color: #388e3c;
+  color: white;
+}
+
+.alignBtnColumn{
+  display: flex;
+  flex-direction: column;
+}

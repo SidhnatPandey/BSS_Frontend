@@ -7,7 +7,7 @@
     <img [src]="videoStreamUrl" alt="Live Stream" />
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="3" rowspan="7" class="metadata">
+  <mat-grid-tile colspan="3" rowspan="6" class="metadata">
     <div class="meta">
       <!-- <div><h4>Live MetaData</h4></div>   -->
       <!-- Notification Section -->
@@ -51,6 +51,34 @@
       </div>
     </div>
   </mat-grid-tile>
+
+
+  <mat-grid-tile colspan="3" rowspan="1" class="metabutton-container">
+    <div class="alignBtnColumn">
+    <div class="mission-header header">
+      <span class="mission-title">MISSION CONTROL</span>
+      <span class="mission-details">
+        Active Mission: NA | Location: NA | Coordinates: &lt;&gt;
+      </span>
+      <button mat-raised-button color="accent" class="target-lock-btn">
+        TARGET LOCK
+      </button>
+    </div>
+    <div class="metabutton-group">
+      <button mat-raised-button color="warn" class="mission-btn">
+        🚀 LAUNCH DRONE RECON MISSION
+      </button>
+      <button mat-raised-button color="primary" class="mission-btn">
+        ❌ ABORT DRONE RECON MISSION
+      </button>
+      <button mat-raised-button color="success" class="mission-btn">
+        💀 LAUNCH DRONE INTERCEPTOR
+      </button>
+    </div>
+  </div>
+  </mat-grid-tile>
+  
+  
 
   <mat-grid-tile colspan="3" rowspan="4" class="map">
     <!-- <h4>India Map With Coordinates</h4> -->
