@@ -3,19 +3,23 @@
   <mat-grid-tile colspan="9" rowspan="8" class="center-content">
     <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
   </mat-grid-tile>
-
+  
   <mat-grid-tile colspan="3" rowspan="8" class="metadata">
     <div class="meta">
-      <div>
-        <mat-card class="notification red">
-          [!] Enemy troops detected at 1125 Hrs
-        </mat-card>
-        <mat-card class="notification red">
-          [^] Drone recon launched at 1137 Hrs
-        </mat-card>
-      </div>
+        <mat-card class="card" style="margin-bottom: 0.5rem;">
+          <mat-card-content style="max-height: 8rem; overflow-y: scroll;"> 
+            <p class="notification red">[!] Enemy troops detected at 1125 Hrs</p>
+            <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
+            <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
+            <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
+            <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
+            <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
+          </mat-card-content>
 
+        </mat-card>
       <!-- Enemy Movement Summary -->
+      <mat-card style="height: 60%;" class="main-meta-card card">
+        <!-- <button mat-flat-button style="width: 5rem;" >Open</button> -->
       <div class="summary">
         <p>
           <strong>Enemy movement summary:</strong> soldiers detected by multiple
@@ -47,6 +51,7 @@
           </p>
         </div>
       </div>
+    </mat-card>
     </div>
   </mat-grid-tile>
 

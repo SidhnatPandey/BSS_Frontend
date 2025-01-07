@@ -6,6 +6,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HeaderComponent } from "../components/header/header.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,6 +26,9 @@ export class DashboardComponent {
     { label: 'BSS 6', url: 'assets/bss/photo6.jpg' },
   ];
 
-  activeAlertIndex = 3; // Index of the card with the alert overlay
-
+  constructor(private router: Router){}
+  nevigateToLiveFeed() {
+    this.router.navigate(['/live-feed']);
+  };
+  activeAlertIndex = 3;
 }
