@@ -91,6 +91,31 @@
     padding: 10px;
     text-align: center;
   }
+
+  .photo-wrapper {
+    position: relative;
+  }
+  
+  .photo-header {
+    display: flex;
+    justify-content: space-between; /* Left-align label and right-align update text */
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .photo-label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .photo-update {
+    margin: 0;
+    font-size: 12px;
+    color: #777; /* Subtle color for "Last update" text */
+    text-align: right;
+  }
   
   img {
     width: 100%;
