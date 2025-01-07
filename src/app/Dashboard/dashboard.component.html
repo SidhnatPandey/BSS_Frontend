@@ -39,15 +39,15 @@
 
   <!-- Second and Third Rows -->
   <div class="photo-grid">
-    <mat-card class="photo-card" *ngFor="let photo of photos; let i = index">
-      <div class="photo-wrapper">
-        <h4>{{ photo.label }}</h4>
-        <img [src]="photo.url" [alt]="photo.label" />
-        <!-- Active alert overlay -->
-        <div class="alert-overlay" *ngIf="i === activeAlertIndex">
-          <div class="alert-animation">ALERT - Movement Detected</div>
-        </div>
-      </div>
+    <mat-card class="photo-card" (click)="nevigateToLiveFeed()" style="cursor: pointer;" *ngFor="let photo of photos; let i = index">
+    <div class="photo-wrapper">
+      <h4>{{ photo.label }}</h4>
+      <img [src]="photo.url" [alt]="photo.label" />
+    <!-- Active alert overlay -->
+    <div class="alert-overlay" *ngIf="i === activeAlertIndex">
+        <div class="alert-animation">ALERT - Movement Detected</div>
+    </div>
+    </div>
     </mat-card>
   </div>
 </div>

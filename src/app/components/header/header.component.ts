@@ -14,7 +14,7 @@ import { Router, RouterModule } from "@angular/router";
 export class HeaderComponent {
   constructor(private router: Router) {}
 
-  hanldeLogoClick() {
+  handelLogoClick() {
     this.router.navigate(["/dashboard"]);
   }
 }
