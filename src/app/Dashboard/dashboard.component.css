@@ -1,0 +1,129 @@
+:host {
+    display: block;
+    height: 100vh; /* Full height of the viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .summary-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    min-height: 150px; /* Ensure enough height */
+    box-sizing: border-box;
+  }
+  
+  .card-content {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Icon adjusts automatically, text takes remaining space */
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
+    width: 100%;
+  }
+  
+  .icon-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .summary-icon {
+    font-size: 50px; /* Adjust size as needed */
+    color: #d92b2b; /* Material Blue */
+    min-width: 80px; /* Ensure sufficient width for larger icons */
+    min-height: 80px; /* Ensure consistent height */
+    padding-top: 1rem; /* Adjust vertical alignment */
+  }
+
+  .location-icon {
+    color: #4caf50; /* Green for Locations */
+  }
+  
+  .alert-icon {
+    color: #f44336; /* Red for Active Alerts */
+  }
+  
+  .mission-icon {
+    color: #2196f3; /* Blue for Active Missions */
+  }
+  
+  .text-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+  
+  .text-column h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  
+  .text-column p {
+    margin: 5px 0 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .photo-card {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .alert-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 108, 108, 0.51); /* Semi-transparent red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Allow clicks to pass through to the card */
+  }
+  
+  .alert-animation {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    animation: blink 1s infinite; /* Continuous blinking animation */
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
