@@ -6,6 +6,7 @@ import { SidebarComponent } from "../Sidebar/sidebar.component";
 import { CommonModule } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { LiveFeedWrapperComponent } from "../components/live-feed-wrapper/live-feed-wrapper.component";
+import { HeaderComponent } from "../components/header/header.component";
 
 @Component({
   selector: "app-dashboard",
@@ -19,6 +20,7 @@ import { LiveFeedWrapperComponent } from "../components/live-feed-wrapper/live-f
     NavbarComponent,
     SidebarComponent,
     LiveFeedWrapperComponent,
+    HeaderComponent,
   ],
 })
 export class DashboardComponent {}
