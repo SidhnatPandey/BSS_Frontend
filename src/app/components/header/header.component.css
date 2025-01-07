@@ -1,3 +1,17 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.main-logo{
+  width: 3.2rem;
+}
+
+.main-heading{
+  color: teal;
+  font-weight: bold;
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: space-around;
+}
