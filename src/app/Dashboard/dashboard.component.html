@@ -1,4 +1,58 @@
 <app-header></app-header>
+<div class="dashboard-container">
+  <!-- Top Row Summary -->
+  <div class="summary-grid">
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <mat-icon class="summary-icon location-icon">location_on</mat-icon>
+        </div>
+        <div class="text-column">
+          <h3>Locations</h3>
+          <p>6</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <mat-icon class="summary-icon alert-icon">notifications</mat-icon>
+        </div>
+        <div class="text-column">
+          <h3>Active Alerts</h3>
+          <p>1</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <mat-icon class="summary-icon mission-icon">task</mat-icon>
+        </div>
+        <div class="text-column">
+          <h3>Active Missions</h3>
+          <p>0</p>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  
+  <!-- Second and Third Rows -->
+  <div class="photo-grid">
+    <mat-card class="photo-card" *ngFor="let photo of photos; let i = index">
+    <div class="photo-wrapper">
+      <h4>{{ photo.label }}</h4>
+      <img [src]="photo.url" [alt]="photo.label" />
+    <!-- Active alert overlay -->
+    <div class="alert-overlay" *ngIf="i === activeAlertIndex">
+        <div class="alert-animation">ALERT - Movement Detected</div>
+    </div>
+    </div>
+    </mat-card>
+  </div>
+</div>
+  
+=======
 <mat-grid-list cols="3" rowHeight="2:1">
   <mat-grid-tile  aria-colspan="1">
     <mat-card class="card" style="cursor: pointer; justify-content: center; align-items: center; background-color: #d7ede6;" (click)="nevigateToLiveFeed()">
