@@ -1,11 +1,20 @@
-import { Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
-import { NavbarComponent } from "./Navbar/navbar.component";
-import { SidebarComponent } from "./Sidebar/sidebar.component";
 import { DashboardComponent } from "./Dashboard/dashboard.component";
+import { AppComponent } from "./app.component";
+import { LiveFeedWrapperComponent } from "./components/live-feed-wrapper/live-feed-wrapper.component";
 
-export const routes: Routes = [{ path: "", component: DashboardComponent }];
+export const routes: Routes = [
+  {
+    path: "",
+    component: AppComponent,
+    children: [
+      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "dashboard", component: DashboardComponent },
+      { path: "live-feed", component: LiveFeedWrapperComponent },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
