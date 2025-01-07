@@ -2,21 +2,24 @@
   flex: 1 1 auto;
 }
 
-.main-logo-left{
+.main-logo-left {
+  width: 3.2rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.main-logo-right {
   width: 3.2rem;
 }
 
-.main-logo-right{
-  width: 3.2rem;
-}
-
-.main-heading{
+.main-heading {
   color: teal;
   font-weight: bold;
   font-size: 2rem;
 }
 
-.nav-bar{
+.nav-bar {
   display: flex;
   justify-content: space-around;
+  background-color: #fce6c7;
 }

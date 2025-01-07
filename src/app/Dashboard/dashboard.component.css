@@ -2,7 +2,7 @@
     display: block;
     height: 100vh; /* Full height of the viewport */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
   }
 
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    min-height: 150px; /* Ensure enough height */
+    min-height: 150px;
     box-sizing: border-box;
   }
   

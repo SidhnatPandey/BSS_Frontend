@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { HeaderComponent } from "./components/header/header.component";
 import { LiveFeedWrapperComponent } from "./components/live-feed-wrapper/live-feed-wrapper.component";
-
+import { SidebarComponent } from "./Sidebar/sidebar.component";
 @Component({
   selector: "app-root",
   standalone: true,
@@ -16,6 +16,7 @@ import { LiveFeedWrapperComponent } from "./components/live-feed-wrapper/live-fe
     NgApexchartsModule,
     HeaderComponent,
     LiveFeedWrapperComponent,
+    SidebarComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",

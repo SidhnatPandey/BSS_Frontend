@@ -10,6 +10,8 @@ import { VideoStreamService } from "../../services/video-stream.service";
 import { JsonPipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { HeaderComponent } from "../header/header.component";
+import { MissionControlComponent } from "../mission-control/mission-control.component";
+import { SidebarComponent } from "../../Sidebar/sidebar.component";
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
@@ -24,6 +26,8 @@ import { HeaderComponent } from "../header/header.component";
     JsonPipe,
     MatButtonModule,
     HeaderComponent,
+    MissionControlComponent,
+    SidebarComponent,
   ],
   providers: [VideoStreamService],
   templateUrl: "./live-feed-wrapper.component.html",
@@ -51,7 +55,7 @@ export class LiveFeedWrapperComponent implements OnInit {
 
   ngOnInit() {
     // Initial call to fetch metadata
-    this.fetchMetaData();
+    // this.fetchMetaData();
 
     // Set up periodic updates
     this.intervalId = setInterval(() => {
