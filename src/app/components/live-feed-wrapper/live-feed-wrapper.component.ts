@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { DragDropModule } from "@angular/cdk/drag-drop";
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { IndMapComponent } from "../ind-map/ind-map.component";
@@ -19,7 +18,6 @@ import { HeaderComponent } from "../header/header.component";
     MatCardModule,
     CommonModule,
     MatGridListModule,
-    DragDropModule,
     IndMapComponent,
     LiveFeedComponent,
     MetaDataComponent,
@@ -34,6 +32,13 @@ import { HeaderComponent } from "../header/header.component";
 export class LiveFeedWrapperComponent implements OnInit {
   selectedSensor: { name: string; data: string } | null = null;
   metaData: any[] = [];
+
+  tiles = [
+    { text: "One", cols: 3, rows: 1, color: "lightblue" },
+    { text: "Two", cols: 1, rows: 2, color: "lightgreen" },
+    { text: "Three", cols: 1, rows: 1, color: "lightpink" },
+    { text: "Four", cols: 2, rows: 1, color: "#DDBDF1" },
+  ];
 
   videoStreamUrl: string = "http://127.0.0.1:1000/api/video_feed";
   videoStreamUrlRajak: string = "http://127.0.0.1:1000/api/thermal_video_feed";

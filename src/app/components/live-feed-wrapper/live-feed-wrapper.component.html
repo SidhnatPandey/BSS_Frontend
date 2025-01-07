@@ -1,17 +1,11 @@
 <app-header></app-header>
-<mat-grid-list cols="12" rowHeight="fit" gutterSize="3px" class="main-grid">
+<mat-grid-list cols="12" rowHeight="fit" class="main-grid">
   <mat-grid-tile colspan="9" rowspan="8" class="center-content">
-    <!-- <div *ngIf="selectedSensor">
-      <h4>{{ selectedSensor?.name }}</h4>
-      <p>{{ selectedSensor?.data }}</p>
-    </div> -->
     <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="3" rowspan="6" class="metadata">
+  <mat-grid-tile colspan="3" rowspan="8" class="metadata">
     <div class="meta">
-      <!-- <div><h4>Live MetaData</h4></div>   -->
-      <!-- Notification Section -->
       <div>
         <mat-card class="notification red">
           [!] Enemy troops detected at 1125 Hrs
@@ -19,11 +13,6 @@
         <mat-card class="notification red">
           [^] Drone recon launched at 1137 Hrs
         </mat-card>
-        <!-- <mat-card class="notification red">
-          ALERT: 10 Enemy troops detected!
-          <br />
-          Time: 1125 Hrs | Location: xyz | Coordinates: 123
-        </mat-card> -->
       </div>
 
       <!-- Enemy Movement Summary -->
@@ -61,7 +50,7 @@
     </div>
   </mat-grid-tile>
 
-  <mat-grid-tile colspan="3" rowspan="1" class="metabutton-container">
+  <!--  <mat-grid-tile colspan="9" rowspan="1" class="metabutton-container">
     <div class="alignBtnColumn">
       <div class="mission-header header">
         <span class="mission-title">MISSION CONTROL</span>
@@ -84,13 +73,8 @@
         </button>
       </div>
     </div>
-  </mat-grid-tile>
-
-  <mat-grid-tile colspan="3" rowspan="4" class="map">
-    <!-- <h4>India Map With Coordinates</h4> -->
-    <app-ind-map></app-ind-map>
-  </mat-grid-tile>
-  <mat-grid-tile
+  </mat-grid-tile> -->
+  <!-- <mat-grid-tile
     colspan="3"
     rowspan="3"
     class="footer"
@@ -116,5 +100,16 @@
     (click)="selectSensor({ name: 'HHT1', data: 'Live data from HHT1' })"
   >
     <img [src]="videoStreamUrlHhti" alt="Live Stream" class="video" />
+  </mat-grid-tile> -->
+  <mat-grid-tile
+    colspan="9"
+    rowspan="3"
+    [ngClass]="{ highlighted: selectedSensor?.name === 'RAJAK' }"
+    (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
+  >
+    <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video" />
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="3" class="map">
+    <app-ind-map></app-ind-map>
   </mat-grid-tile>
 </mat-grid-list>
