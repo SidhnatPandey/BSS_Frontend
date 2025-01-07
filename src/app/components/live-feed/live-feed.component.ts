@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
+import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 
 export interface Tile {
@@ -12,7 +13,7 @@ export interface Tile {
 @Component({
   selector: "app-live-feed",
   standalone: true,
-  imports: [MatGridListModule, CommonModule],
+  imports: [MatGridListModule, CommonModule, MatCardModule],
   templateUrl: "./live-feed.component.html",
   styleUrl: "./live-feed.component.css",
 })
@@ -35,7 +36,7 @@ export class LiveFeedComponent {
     if (sensor.name === "RAJAK") {
       this.videoStreamUrl = this.videoStreamUrlRajak;
     } else if (sensor.name === "PTZ") {
-      this.videoStreamUrl = this.videoStreamUrlPtz;
+      this.videoStreamUrl = this.videoStreamUrlHhti;
     } else if (sensor.name === "HHT1") {
       this.videoStreamUrl = this.videoStreamUrlHhti;
     }
