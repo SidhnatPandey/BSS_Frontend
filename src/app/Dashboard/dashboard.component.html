@@ -39,20 +39,24 @@
 
   <!-- Second and Third Rows -->
   <div class="photo-grid">
-    <mat-card class="photo-card" (click)="nevigateToLiveFeed()" style="cursor: pointer;" *ngFor="let photo of photos; let i = index">
-    <div class="photo-wrapper">
-    <!-- Label and Last Update -->
-    <div class="photo-header">
-        <h4 class="photo-label">{{ photo.label }}</h4>
-        <p class="photo-update">Last update {{ photo.lastUpdate }} sec ago</p>
-    </div>
-    <!-- Photo -->
-    <img [src]="photo.url" [alt]="photo.label" />
-    <!-- Active alert overlay -->
-    <div class="alert-overlay" *ngIf="i === activeAlertIndex">
-        <div class="alert-animation">ALERT - Movement Detected</div>
-    </div>
-    </div>
+    <mat-card
+      class="photo-card"
+      style="cursor: pointer"
+      *ngFor="let photo of photos; let i = index"
+    >
+      <div class="photo-wrapper">
+        <!-- Label and Last Update -->
+        <div class="photo-header">
+          <h4 class="photo-label">{{ photo.label }}</h4>
+          <p class="photo-update">Last update {{ photo.lastUpdate }} sec ago</p>
+        </div>
+        <!-- Photo -->
+        <img [src]="photo.url" [alt]="photo.label" />
+        <!-- Active alert overlay -->
+        <div class="alert-overlay" *ngIf="i === activeAlertIndex">
+          <div class="alert-animation">ALERT - Movement Detected</div>
+        </div>
+      </div>
     </mat-card>
   </div>
 </div>
