@@ -2,33 +2,37 @@
   <div class="left-section">
     <div
       class="part"
-      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
-    >
-      <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
-      <div class="overlay">RAJAK</div>
-    </div>
-    <div
-      class="part"
+      [class.selected]="selectedSensor?.name === 'PTZ'"
       (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })"
     >
-      <img [src]="videoStreamUrlHhti" alt="Live Stream" class="video-side" />
+      <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
       <div class="overlay">PTZ</div>
     </div>
     <div
       class="part"
-      (click)="selectSensor({ name: 'HHT1', data: 'Live data from HHT1' })"
+      [class.selected]="selectedSensor?.name === 'HSTI'"
+      (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })"
     >
-      <img [src]="videoStreamUrlHhti" alt="Live Stream" class="video-side" />
-      <div class="overlay">HHT1</div>
+      <img [src]="videoStreamUrlHsti" alt="Live Stream" class="video-side" />
+      <div class="overlay">HSTI</div>
     </div>
     <div
       class="part"
+      [class.selected]="selectedSensor?.name === 'RAJAK'"
+      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
+    >
+      <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video-side" />
+      <div class="overlay">RAJAK</div>
+    </div>
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'LORROS'"
       (click)="
-        selectSensor({ name: 'Sensor 4', data: 'Live data from Sensor 4' })
+        selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
       "
     >
-      <img [src]="videoStreamUrlHhti" alt="Live Stream" class="video-side" />
-      <div class="overlay">Sensor 4</div>
+      <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
+      <div class="overlay">LORROS</div>
     </div>
   </div>
   <div class="right-section">

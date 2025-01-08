@@ -10,7 +10,18 @@ import { GoogleMapsModule } from "@angular/google-maps";
 })
 export class IndMapComponent {
   center: google.maps.LatLngLiteral = { lat: 28.5961, lng: 77.1587 };
-  zoom = 8;
+  zoom = 10;
+
+  // Use google.maps.MapTypeId for map type
+  // mapTypeId: google.maps.MapTypeId = google.maps.MapTypeId.TERRAIN;
+  // Define map options including mapTypeId
+    mapOptions: google.maps.MapOptions = {
+      center: this.center,
+      zoom: this.zoom,
+      mapTypeId: "hybrid",
+      disableDefaultUI: false,
+    };
+  
   markerPositions: google.maps.LatLngLiteral[] = [
     { lat: 28.5961, lng: 77.1587 },
   ];
@@ -22,4 +33,6 @@ export class IndMapComponent {
       this.markerPositions.push(event.latLng.toJSON());
     }
   }
+
+
 }
