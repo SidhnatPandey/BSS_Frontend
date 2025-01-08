@@ -7,7 +7,6 @@ import { HeaderComponent } from "../components/header/header.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 
 
@@ -28,9 +27,9 @@ export class DashboardComponent {
     { label: 'BSS 6', url: 'assets/bss/photo6.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
   ];
 
-  activeAlertIndex: number | null = null; // Initially no alert
+  activeAlertIndex: number | null = null;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.startRefreshTimer();
@@ -51,38 +50,6 @@ export class DashboardComponent {
         }
       });
     }, 1000); // Increment every second
-  }
-
-  fetchFrame(photo: any): void {
-    const video = document.createElement('video');
-    video.src = photo.videoFeedUrl;
-    video.crossOrigin = 'anonymous';
-    video.autoplay = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.style.display = 'none';
-    document.body.appendChild(video);
-  
-    video.addEventListener('loadeddata', () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-  
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        photo.url = canvas.toDataURL('image/jpeg');
-  
-        video.pause();
-        video.remove();
-        canvas.remove();
-      }
-    });
-  
-    video.addEventListener('error', (e) => {
-      console.error('Error loading video feed:', e);
-      video.remove();
-    });
   }
 
   navigateToLiveFeed(photo: any): void {
