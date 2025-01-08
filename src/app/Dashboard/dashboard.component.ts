@@ -26,7 +26,9 @@ export class DashboardComponent {
     { label: 'BSS 6', url: 'assets/bss/photo6.jpg', lastUpdate: 0 },
   ];
 
-  activeAlertIndex: number | null = null; // Initially no alert
+  activeAlertIndex: number | null = null;
+
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.startRefreshTimer();
@@ -45,5 +47,9 @@ export class DashboardComponent {
         }
       });
     }, 1000); // Increment every second
+  }
+
+  nevigateToLiveFeed(){
+    this.router.navigate(["/live-feed"])
   }
 }
