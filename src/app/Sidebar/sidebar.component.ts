@@ -326,7 +326,7 @@ export class SidebarComponent implements OnInit {
   }
   navDashboard() {
     this.navActive = "dashboard";
-    this.router.navigate(["/dashboard"]);
+    this.router.navigate(["/"]);
   }
   navUm1() {
     this.navActive = "user";

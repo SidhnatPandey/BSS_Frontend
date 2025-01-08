@@ -6,6 +6,7 @@ import { HeaderComponent } from "../../header/header.component";
 import { SidebarComponent } from "../../../Sidebar/sidebar.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import {MatDividerModule} from '@angular/material/divider';
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { DroneDialogComponent } from "../drone-dialog/drone-dialog.component";
 
@@ -25,6 +26,7 @@ interface Drone {
     SidebarComponent,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule,
     MatDialogModule,
     DroneDialogComponent,
   ],
