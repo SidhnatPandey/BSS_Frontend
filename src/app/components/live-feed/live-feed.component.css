@@ -2,15 +2,15 @@
   display: flex; /* Enables Flexbox */
   width: 100%; /* Full width of the parent container */
   height: 100%; /* Full height of the viewport */
-  gap: 2px;
+  gap: 10px;
 }
 
 .left-section {
-  flex: 2; /* Takes 1/2 of the container */
+  flex: 1; /* Takes 1/2 of the container */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  gap: 2px;
+  gap: 10px;
 }
 .part {
   flex: 1; /* Divide the space equally */
@@ -20,6 +20,12 @@
   cursor: pointer;
   position: relative; /* Make sure overlay is positioned inside the div */
 }
+
+.part.selected {
+  border: 2px solid #00f;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+}
+
 .overlay {
   position: absolute; /* Position it on top of the content */
   top: 0;

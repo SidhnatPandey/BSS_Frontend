@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { DashboardComponent } from "./Dashboard/dashboard.component";
 import { AppComponent } from "./app.component";
 import { LiveFeedWrapperComponent } from "./components/live-feed-wrapper/live-feed-wrapper.component";
+import { DroneLayoutComponent } from "./components/drone/drone-layout/drone-layout.component";
 
 export const routes: Routes = [
   {
@@ -12,6 +13,7 @@ export const routes: Routes = [
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "dashboard", component: DashboardComponent },
       { path: "live-feed", component: LiveFeedWrapperComponent },
+      { path: "drone-feed", component: DroneLayoutComponent },
     ],
   },
 ];

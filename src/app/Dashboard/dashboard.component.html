@@ -43,6 +43,7 @@
       class="photo-card"
       style="cursor: pointer"
       *ngFor="let photo of photos; let i = index"
+      (click)="navigateToLiveFeed(photo)"
     >
       <div class="photo-wrapper">
         <!-- Label and Last Update -->

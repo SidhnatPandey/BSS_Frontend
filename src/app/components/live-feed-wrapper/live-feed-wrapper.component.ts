@@ -1,22 +1,29 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { interval, Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { MatCardModule } from "@angular/material/card";
 import { IndMapComponent } from "../ind-map/ind-map.component";
 import { LiveFeedComponent } from "../live-feed/live-feed.component";
 import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { CommonModule } from "@angular/common";
-import { VideoStreamService } from "../../services/video-stream.service";
 import { JsonPipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { HeaderComponent } from "../header/header.component";
 import { MissionControlComponent } from "../mission-control/mission-control.component";
 import { SidebarComponent } from "../../Sidebar/sidebar.component";
+
+interface Alert {
+  id: number;
+  message: string;
+  timestamp: string; // Or Date if you parse it
+}
+
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
   imports: [
-    HttpClientModule,
     MatCardModule,
     CommonModule,
     MatGridListModule,
@@ -29,61 +36,36 @@ import { SidebarComponent } from "../../Sidebar/sidebar.component";
     MissionControlComponent,
     SidebarComponent,
   ],
-  providers: [VideoStreamService],
   templateUrl: "./live-feed-wrapper.component.html",
   styleUrls: ["./live-feed-wrapper.component.css"], // Corrected styleUrls
 })
-export class LiveFeedWrapperComponent implements OnInit {
-  selectedSensor: { name: string; data: string } | null = null;
-  metaData: any[] = [];
+export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
+  alerts: Alert[] = [];
+  private alertSubscription!: Subscription;
+  private apiUrl = 'http://127.0.0.1:8000/api/alerts/bss1'; // Replace with your actual API endpoint
 
-  tiles = [
-    { text: "One", cols: 3, rows: 1, color: "lightblue" },
-    { text: "Two", cols: 1, rows: 2, color: "lightgreen" },
-    { text: "Three", cols: 1, rows: 1, color: "lightpink" },
-    { text: "Four", cols: 2, rows: 1, color: "#DDBDF1" },
-  ];
+  constructor(private http: HttpClient) {}
 
-  videoStreamUrl: string = "http://127.0.0.1:1000/api/video_feed";
-  videoStreamUrlRajak: string = "http://127.0.0.1:1000/api/thermal_video_feed";
-  videoStreamUrlPtz: string = "http://127.0.0.1:1000/api/video_feed";
-  videoStreamUrlHhti: string = "http://127.0.0.1:1000/api/ptz_video_feed";
-
-  private intervalId: any;
-
-  constructor(private videoStreamService: VideoStreamService) {}
-
-  ngOnInit() {
-    // Initial call to fetch metadata
-    // this.fetchMetaData();
-
-    // Set up periodic updates
-    this.intervalId = setInterval(() => {
-      this.fetchMetaData();
-    }, 1000); // Adjust the interval as needed (1000ms = 1 second)
+  ngOnInit(): void {
+    // Fetch notifications every 10 seconds
+    this.alertSubscription = interval(10000)
+      .pipe(switchMap(() => this.http.get<Alert[]>(this.apiUrl)))
+      .subscribe((newAlerts) => {
+        // Add new notifications to the stack
+        this.alerts.push(...newAlerts);
+      });
   }
 
-  ngOnDestroy() {
-    // Clear the interval when the component is destroyed
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+  dismissAlert(alertId: number): void {
+    this.alerts = this.alerts.filter(
+      (alert) => alert.id !== alertId
+    );
   }
 
-  fetchMetaData() {
-    this.videoStreamService.getMetaData().subscribe((data: any[]) => {
-      this.metaData = data;
-    });
-  }
-
-  selectSensor(sensor: { name: string; data: string }) {
-    this.selectedSensor = sensor;
-    if (sensor.name === "RAJAK") {
-      this.videoStreamUrl = this.videoStreamUrlRajak;
-    } else if (sensor.name === "PTZ") {
-      this.videoStreamUrl = this.videoStreamUrlPtz;
-    } else if (sensor.name === "HHT1") {
-      this.videoStreamUrl = this.videoStreamUrlHhti;
+  ngOnDestroy(): void {
+    // Clean up the subscription
+    if (this.alertSubscription) {
+      this.alertSubscription.unsubscribe();
     }
   }
 }

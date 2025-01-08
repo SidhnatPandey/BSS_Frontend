@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: "app-dashboard",
   standalone: true,
@@ -18,12 +19,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
   photos = [
-    { label: 'BSS 1', url: 'assets/bss/photo1.jpg', lastUpdate: 0 },
-    { label: 'BSS 2', url: 'assets/bss/photo2.jpg', lastUpdate: 0 },
-    { label: 'BSS 3', url: 'assets/bss/photo3.jpg', lastUpdate: 0 },
-    { label: 'BSS 4', url: 'assets/bss/photo4.jpg', lastUpdate: 0 },
-    { label: 'BSS 5', url: 'assets/bss/photo5.jpg', lastUpdate: 0 },
-    { label: 'BSS 6', url: 'assets/bss/photo6.jpg', lastUpdate: 0 },
+    { label: 'BSS 1', url: 'assets/bss/photo1.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
+    { label: 'BSS 2', url: 'assets/bss/photo2.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
+    { label: 'BSS 3', url: 'assets/bss/photo3.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
+    { label: 'BSS 4', url: 'assets/bss/photo4.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
+    { label: 'BSS 5', url: 'assets/bss/photo5.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
+    { label: 'BSS 6', url: 'assets/bss/photo6.jpg', lastUpdate: 0, videoFeedUrl: 'http://127.0.0.1:8000/api/ptz_video_feed' },
   ];
 
   activeAlertIndex: number | null = null;
@@ -44,12 +45,17 @@ export class DashboardComponent {
         photo.lastUpdate++;
         if (photo.lastUpdate > 15) {
           photo.lastUpdate = 0; // Reset after 15 seconds
+          // console.log(`Fetching new frame for ${photo.label}`);
+          // this.fetchFrame(photo);
         }
       });
     }, 1000); // Increment every second
   }
 
-  nevigateToLiveFeed(){
-    this.router.navigate(["/live-feed"])
+  navigateToLiveFeed(photo: any): void {
+    // Navigate to /live-feed with optional query parameters or state
+    this.router.navigate(['/live-feed'], {
+      queryParams: { location: photo.label },
+    });
   }
 }

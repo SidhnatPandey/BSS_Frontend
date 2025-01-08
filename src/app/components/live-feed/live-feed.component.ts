@@ -26,19 +26,28 @@ export class LiveFeedComponent {
   ];
   leftItems = ["Main Entrance", "Parking Lot", "Loading Dock", "Backyard"];
   selectedSensor: { name: string; data: string } | null = null;
-  videoStreamUrl: string = "http://127.0.0.1:1000/api/video_feed";
-  videoStreamUrlRajak: string = "http://127.0.0.1:1000/api/thermal_video_feed";
-  videoStreamUrlPtz: string = "http://127.0.0.1:1000/api/video_feed";
-  videoStreamUrlHhti: string = "http://127.0.0.1:1000/api/ptz_video_feed";
+  videoStreamUrl: string = "http://127.0.0.1:8000/api/video_feed";
+  videoStreamUrlRajak: string = "http://127.0.0.1:8000/api/ptz_video_feed";
+  videoStreamUrlPtz: string = "http://127.0.0.1:8000/api/ptz_video_feed";
+  videoStreamUrlHsti: string = "http://127.0.0.1:8000/api/thermal_video_feed";
+  videoStreamUrlLorros: string = "http://127.0.0.1:8000/api/ptz_video_feed";
 
+  ngOnInit(): void {
+    // Pre-select PTZ sensor as the default
+    this.selectSensor({ name: 'PTZ', data: 'Live data from PTZ' });
+  }
   selectSensor(sensor: { name: string; data: string }) {
     this.selectedSensor = sensor;
     if (sensor.name === "RAJAK") {
       this.videoStreamUrl = this.videoStreamUrlRajak;
     } else if (sensor.name === "PTZ") {
-      this.videoStreamUrl = this.videoStreamUrlHhti;
-    } else if (sensor.name === "HHT1") {
-      this.videoStreamUrl = this.videoStreamUrlHhti;
+      this.videoStreamUrl = this.videoStreamUrlPtz;
+    } else if (sensor.name === "HSTI") {
+      this.videoStreamUrl = this.videoStreamUrlHsti;
+    } else if (sensor.name === "LORROS") {
+      this.videoStreamUrl = this.videoStreamUrlLorros;
+    } else {
+      this.videoStreamUrl = this.videoStreamUrlPtz;
     }
   }
 }
