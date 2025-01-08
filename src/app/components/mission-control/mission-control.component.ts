@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mission-control',
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './mission-control.component.css'
 })
 export class MissionControlComponent {
+  constructor(private router : Router){}
+  nevigateToLaunchDrone(){
+    this.router.navigate(["/drone-feed"]);
+  }
 }
