@@ -40,6 +40,12 @@ export class DroneLayoutComponent {
     { name: "DGI MAVIC AIR 2", isOnline: false },
     { name: "DGI PHANTOM", isOnline: false },
   ];
+
+  altitude: number = 120;
+  speed: number = 35;
+  heading: string = "20°";
+  gps: { latitude: number; longitude: number } = { latitude: 40.7128, longitude: 74.0060 };
+
   selectedDrone: Drone | null = null;
   videoStreamUrl: string = "assets/video/drone.mp4";
   readonly dialog = inject(MatDialog);
@@ -47,8 +53,21 @@ export class DroneLayoutComponent {
   hideBtn: boolean = false;
 
   ngOnInit(): void {
-    //this.selectDrone({ ...this.drones[1] });
+    this.updateValuesRandomly();
   }
+
+  updateValuesRandomly() {
+    setInterval(() => {
+      this.altitude = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
+      this.speed = Math.floor(Math.random() * (50 - 40 + 1)) + 40;
+      this.heading = `${Math.floor(Math.random() * 360)}°`; 
+      this.gps = {
+        latitude: +(Math.random() * 50).toFixed(6) + 100, 
+        longitude: +(Math.random() * 10).toFixed(6) + 100,
+      };
+    }, 1000);
+  }
+
   selectDrone(drone: Drone) {
     if (!drone.isOnline) return;
     this.selectedDrone = drone;

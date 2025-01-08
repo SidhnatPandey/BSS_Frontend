@@ -101,8 +101,21 @@
           </mat-card-title>
           <mat-divider></mat-divider>
           <mat-card-content>
-            <p>Drone is 30 miles left</p>
-            <p>Co-ordinates longitude and latitude</p>
+            <p *ngIf="missionType != 'recon'" style="font-size: larger; margin-top: 20%;" class="no-data flight_path_image">No Meta Data Available!</p>
+            <div *ngIf="missionType == 'recon'">
+              <div class="metadata-section">
+                <p class="pragraph-section"><strong>Altitude:</strong> {{altitude}} m</p>
+                <p class="pragraph-section"><strong>Speed:</strong> {{speed}} km/h</p>
+                <p class="pragraph-section"><strong>Heading:</strong> East</p>
+                <p class="pragraph-section"><strong>GPS:</strong> {{gps.latitude}}° N, {{gps.longitude}}° W</p>
+              </div>
+              <div class="metadata-section">
+                <h4 class="heading-4">Status</h4>
+                <p class="pragraph-section"><strong>Battery:</strong> 78%</p>
+                <p class="pragraph-section"><strong>Signal Strength:</strong> Strong (4 bars)</p>
+                <p class="pragraph-section"><strong>Wind Speed:</strong> 12 km/h</p>
+              </div>
+            </div>
           </mat-card-content>
         </mat-card>
       </div>
