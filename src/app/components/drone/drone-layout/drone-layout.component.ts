@@ -6,6 +6,7 @@ import { HeaderComponent } from "../../header/header.component";
 import { SidebarComponent } from "../../../Sidebar/sidebar.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import {MatDividerModule} from '@angular/material/divider';
 
 interface Drone {
   name: string;
@@ -23,6 +24,7 @@ interface Drone {
     SidebarComponent,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule
   ],
   templateUrl: "./drone-layout.component.html",
   styleUrl: "./drone-layout.component.css",

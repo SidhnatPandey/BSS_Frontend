@@ -45,8 +45,16 @@
 .metabutton-group {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 30%;
   gap: 10px;
+  padding: 0.5rem;
+}
+
+.live-vedio-analysis-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
 }
 
 .mission-btn {
@@ -83,4 +91,11 @@
 .alignBtnColumn {
   display: flex;
   flex-direction: column;
+}
+
+.meta-section{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -115,6 +115,19 @@
 
 .right-section {
   flex: 2; /* Takes 1/2 of the container */
-  background-color: red;
+  background-color: rgb(255, 255, 255);
   display: flex;
+  flex-direction: column;
 }
+
+.flight_path_image{
+  width: 100%;
+  height: 50%;
+}
+
+.flight_path_image {
+  display: block;
+  width: 100%;
+  height: 90%;
+}
+
