@@ -28,21 +28,34 @@
           <button
             mat-flat-button
             class="mission-btn"
-            [disabled]="!selectedDrone?.isOnline"
+            [disabled]="
+              !selectedDrone?.isOnline || missionType == 'interceptor'
+            "
             (click)="hanldeMissionRecon()"
           >
             Launch Recon Mission
+            <span class="btn-active" *ngIf="missionType == 'recon'"
+              >Active</span
+            >
           </button>
           <button
             mat-flat-button
             class="mission-btn"
-            [disabled]="!selectedDrone?.isOnline"
+            [disabled]="!selectedDrone?.isOnline || missionType == 'recon'"
             (click)="hanldeInterceptor()"
           >
             Launch Intreceptor
+            <span class="btn-active" *ngIf="missionType == 'interceptor'"
+              >Active</span
+            >
           </button>
         </div>
-        <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
+        <div class="video-container">
+          <video autoplay muted loop>
+            <source src="assets/video/drone.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
       <div class="right-section"></div>
     </div>
