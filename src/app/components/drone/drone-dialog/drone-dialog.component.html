@@ -1,7 +1,10 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>Confirmation</h1>
   <mat-dialog-content>
-    <p>Are you sure you want to proceed?</p>
+    <p *ngIf="data.launchType === 'abort'">
+      Are you sure you want to abort Mission?
+    </p>
+    <p *ngIf="data.launchType != 'abort'">Are you sure you want to proceed?</p>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
     <button mat-button mat-dialog-close>No</button>
