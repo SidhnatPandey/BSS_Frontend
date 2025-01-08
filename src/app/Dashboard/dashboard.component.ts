@@ -61,7 +61,7 @@ export class DashboardComponent {
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
   ];
-
+  alertCount = 0;
   activeAlertIndex: number | null = null;
 
   constructor(private router: Router) {}
@@ -71,6 +71,7 @@ export class DashboardComponent {
     // Delay the alert by 10 seconds (10000 milliseconds)
     setTimeout(() => {
       this.activeAlertIndex = 2; // Index of the card where the alert should appear
+      this.alertCount++;
     }, 8000);
   }
 
@@ -80,8 +81,6 @@ export class DashboardComponent {
         photo.lastUpdate++;
         if (photo.lastUpdate > 15) {
           photo.lastUpdate = 0; // Reset after 15 seconds
-          // console.log(`Fetching new frame for ${photo.label}`);
-          // this.fetchFrame(photo);
         }
       });
     }, 1000); // Increment every second
