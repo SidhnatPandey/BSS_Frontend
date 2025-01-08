@@ -4,6 +4,13 @@ import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { HeaderComponent } from "../../header/header.component";
 import { SidebarComponent } from "../../../Sidebar/sidebar.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+
+interface Drone {
+  name: string;
+  isOnline: boolean;
+}
 
 @Component({
   selector: "app-drone-layout",
@@ -14,6 +21,8 @@ import { SidebarComponent } from "../../../Sidebar/sidebar.component";
     MatCardModule,
     HeaderComponent,
     SidebarComponent,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: "./drone-layout.component.html",
   styleUrl: "./drone-layout.component.css",
@@ -25,13 +34,21 @@ export class DroneLayoutComponent {
     { name: "Three", isOnline: true },
     { name: "Four", isOnline: false },
   ];
-  selectedDrone: any;
+  selectedDrone: Drone | null = null;
   videoStreamUrl: string = "http://127.0.0.1:8000/api/video_feed";
 
   ngOnInit(): void {
-    this.selectDrone({ ...this.drones[1] });
+    //this.selectDrone({ ...this.drones[1] });
   }
-  selectDrone(drone: any) {
+  selectDrone(drone: Drone) {
     this.selectedDrone = drone;
+  }
+
+  hanldeMissionRecon() {
+    console.log(this.selectedDrone);
+  }
+
+  hanldeInterceptor() {
+    console.log(this.selectedDrone);
   }
 }

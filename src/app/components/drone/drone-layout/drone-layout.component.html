@@ -23,9 +23,28 @@
           </div>
         </ng-container>
       </div>
-      <div class="right-section">
+      <div class="middle-section">
+        <div class="btn-group">
+          <button
+            mat-flat-button
+            class="mission-btn"
+            [disabled]="!selectedDrone?.isOnline"
+            (click)="hanldeMissionRecon()"
+          >
+            Launch Recon Mission
+          </button>
+          <button
+            mat-flat-button
+            class="mission-btn"
+            [disabled]="!selectedDrone?.isOnline"
+            (click)="hanldeInterceptor()"
+          >
+            Launch Intreceptor
+          </button>
+        </div>
         <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
       </div>
+      <div class="right-section"></div>
     </div>
   </div>
 </div>
