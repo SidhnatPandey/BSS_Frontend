@@ -32,22 +32,33 @@
               !selectedDrone?.isOnline || missionType == 'interceptor'
             "
             (click)="hanldeMissionRecon()"
+            *ngIf="!(hideBtn && missionType == 'interceptor')"
           >
             Launch Recon Mission
             <span class="btn-active" *ngIf="missionType == 'recon'"
               >Active</span
             >
           </button>
+
           <button
             mat-flat-button
             class="mission-btn"
-            [disabled]="!selectedDrone?.isOnline || missionType == 'recon'"
+            [disabled]="!selectedDrone?.isOnline"
             (click)="hanldeInterceptor()"
+            *ngIf="!(hideBtn && missionType == 'recon')"
           >
             Launch Intreceptor
             <span class="btn-active" *ngIf="missionType == 'interceptor'"
               >Active</span
             >
+          </button>
+          <button
+            mat-flat-button
+            class="abort-btn"
+            *ngIf="!!missionType"
+            (click)="abortMission()"
+          >
+            Abort Mission
           </button>
         </div>
         <div class="video-container">

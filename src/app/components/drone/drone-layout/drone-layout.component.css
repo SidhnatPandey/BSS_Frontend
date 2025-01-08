@@ -43,7 +43,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease-in-out;
@@ -101,6 +101,11 @@
 .btn-group .mission-btn {
   flex: 1;
   height: 3rem;
+}
+.btn-group .abort-btn {
+  flex: 1;
+  height: 3rem;
+  background-color: red;
 }
 
 .btn-active {
