@@ -61,11 +61,12 @@
             Abort Mission
           </button>
         </div>
-        <div class="video-container">
-          <video autoplay muted loop>
+        <div class="video-container" style="display: flex; justify-content: center; align-items: center;">
+          <video *ngIf="missionType == 'recon'" autoplay muted loop>
             <source src="assets/video/drone.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <p *ngIf="missionType != 'recon'" style="margin-top: 20%; font-size: larger;">No Drone Feed Available, Please start the mission to see the Drone Feed!</p>
         </div>
       </div>
       <div class="right-section">
@@ -76,12 +77,18 @@
             <h5 style="margin-top: 10px">Flight Path</h5>
           </mat-card-title>
           <mat-divider></mat-divider>
-          <img
+            <img
             mat-card-image
+            *ngIf="missionType == 'recon'"
             src="../../../../assets/flight_path.png"
-            class="flight_path_image"
             alt="Photo of a Shiba Inu"
+            class="flight_path_image"
           />
+          <!-- <div class="no-data" > -->
+            <p *ngIf="missionType != 'recon'" style="font-size: larger;" class="no-data flight_path_image">
+              No Drone Flight Path Available!
+            </p>
+          <!-- </div> -->
         </mat-card>
         <mat-card
           appearance="outlined"
