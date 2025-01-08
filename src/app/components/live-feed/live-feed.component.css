@@ -19,6 +19,7 @@
   align-items: center; /* Center content vertically */
   cursor: pointer;
   position: relative; /* Make sure overlay is positioned inside the div */
+  transition: border 0.1s ease;
 }
 
 .part.selected {

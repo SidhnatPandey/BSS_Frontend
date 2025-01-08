@@ -4,54 +4,24 @@
   <div class="main-content w-100 live-wrapper">
     <div class="box">
       <div class="left-section">
-        <div
-          class="part"
-          [class.selected]="selectedSensor?.name === 'PTZ'"
-          (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })"
-        >
-          <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
-          <div class="overlay">PTZ</div>
-        </div>
-        <div
-          class="part"
-          [class.selected]="selectedSensor?.name === 'HSTI'"
-          (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })"
-        >
-          <img
-            [src]="videoStreamUrlHsti"
-            alt="Live Stream"
-            class="video-side"
-          />
-          <div class="overlay">HSTI</div>
-        </div>
-        <div
-          class="part"
-          [class.selected]="selectedSensor?.name === 'RAJAK'"
-          (click)="
-            selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })
-          "
-        >
-          <img
-            [src]="videoStreamUrlRajak"
-            alt="Live Stream"
-            class="video-side"
-          />
-          <div class="overlay">RAJAK</div>
-        </div>
-        <div
-          class="part"
-          [class.selected]="selectedSensor?.name === 'LORROS'"
-          (click)="
-            selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
-          "
-        >
-          <img
-            [src]="videoStreamUrlLorros"
-            alt="Live Stream"
-            class="video-side"
-          />
-          <div class="overlay">LORROS</div>
-        </div>
+        <ng-container *ngFor="let drone of drones">
+          <div
+            class="part"
+            [class.selected]="selectedDrone?.name === drone.name"
+            (click)="selectDrone(drone)"
+          >
+            <div class="status-card">
+              <span
+                class="status-dot"
+                [ngClass]="{ online: drone.isOnline, offline: !drone.isOnline }"
+              ></span>
+              <span>{{ drone.isOnline ? "Live" : "Offline" }}</span>
+            </div>
+            <div class="content">
+              <div class="overlay">{{ drone.name }}</div>
+            </div>
+          </div>
+        </ng-container>
       </div>
       <div class="right-section">
         <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
