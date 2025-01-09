@@ -16,11 +16,15 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <mat-icon class="summary-icon alert-icon">notifications</mat-icon>
+          <mat-icon
+            class="summary-icon alert-icon"
+            [ngClass]="{ shake: alertCount > 0 }"
+            >notifications</mat-icon
+          >
         </div>
         <div class="text-column">
           <h3>Active Alerts</h3>
-          <p>1</p>
+          <p>{{ alertCount }}</p>
         </div>
       </div>
     </mat-card>

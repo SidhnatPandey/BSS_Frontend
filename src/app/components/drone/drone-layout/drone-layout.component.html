@@ -61,12 +61,26 @@
             Abort Mission
           </button>
         </div>
-        <div class="video-container" style="display: flex; justify-content: center; align-items: center;">
-          <video *ngIf="missionType == 'recon'" autoplay muted loop>
+        <div
+          class="video-container"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <video
+            *ngIf="missionType == 'recon' || missionType == 'interceptor'"
+            autoplay
+            muted
+            loop
+          >
             <source src="assets/video/drone.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <p *ngIf="missionType != 'recon'" style="margin-top: 20%; font-size: larger;">No Drone Feed Available, Please start the mission to see the Drone Feed!</p>
+          <p
+            *ngIf="missionType != 'recon' && missionType != 'interceptor'"
+            style="margin-top: 20%; font-size: larger"
+          >
+            No Drone Feed Available, Please start the mission to see the Drone
+            Feed!
+          </p>
         </div>
       </div>
       <div class="right-section">
@@ -77,17 +91,21 @@
             <h5 style="margin-top: 10px">Flight Path</h5>
           </mat-card-title>
           <mat-divider></mat-divider>
-            <img
+          <img
             mat-card-image
-            *ngIf="missionType == 'recon'"
+            *ngIf="missionType == 'recon' || missionType == 'interceptor'"
             src="../../../../assets/flight_path1.png"
             alt="Photo of a Shiba Inu"
             class="flight_path_image"
           />
           <!-- <div class="no-data" > -->
-            <p *ngIf="missionType != 'recon'" style="font-size: larger;" class="no-data flight_path_image">
-              No Drone Flight Path Available!
-            </p>
+          <p
+            *ngIf="missionType != 'recon' && missionType != 'interceptor'"
+            style="font-size: larger"
+            class="no-data flight_path_image"
+          >
+            No Drone Flight Path Available!
+          </p>
           <!-- </div> -->
         </mat-card>
         <mat-card
@@ -101,19 +119,36 @@
           </mat-card-title>
           <mat-divider></mat-divider>
           <mat-card-content>
-            <p *ngIf="missionType != 'recon'" style="font-size: larger; margin-top: 20%;" class="no-data flight_path_image">No Meta Data Available!</p>
-            <div *ngIf="missionType == 'recon'">
+            <p
+              *ngIf="missionType != 'recon' && missionType != 'interceptor'"
+              style="font-size: larger; margin-top: 20%"
+              class="no-data flight_path_image"
+            >
+              No Meta Data Available!
+            </p>
+            <div *ngIf="missionType == 'recon' || missionType == 'interceptor'">
               <div class="metadata-section">
-                <p class="pragraph-section"><strong>Altitude:</strong> {{altitude}} m</p>
-                <p class="pragraph-section"><strong>Speed:</strong> {{speed}} km/h</p>
+                <p class="pragraph-section">
+                  <strong>Altitude:</strong> {{ altitude }} m
+                </p>
+                <p class="pragraph-section">
+                  <strong>Speed:</strong> {{ speed }} km/h
+                </p>
                 <p class="pragraph-section"><strong>Heading:</strong> East</p>
-                <p class="pragraph-section"><strong>GPS:</strong> {{gps.latitude}}° N, {{gps.longitude}}° W</p>
+                <p class="pragraph-section">
+                  <strong>GPS:</strong> {{ gps.latitude }}° N,
+                  {{ gps.longitude }}° W
+                </p>
               </div>
               <div class="metadata-section">
                 <h4 class="heading-4">Status</h4>
                 <p class="pragraph-section"><strong>Battery:</strong> 78%</p>
-                <p class="pragraph-section"><strong>Signal Strength:</strong> Strong (4 bars)</p>
-                <p class="pragraph-section"><strong>Wind Speed:</strong> 12 km/h</p>
+                <p class="pragraph-section">
+                  <strong>Signal Strength:</strong> Strong (4 bars)
+                </p>
+                <p class="pragraph-section">
+                  <strong>Wind Speed:</strong> 12 km/h
+                </p>
               </div>
             </div>
           </mat-card-content>

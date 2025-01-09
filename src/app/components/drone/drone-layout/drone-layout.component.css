@@ -1,7 +1,7 @@
 .box {
   display: flex; /* Enables Flexbox */
   width: 100%; /* Full width of the parent container */
-  height: 95%; /* Full height of the viewport */
+  height: 92%; /* Full height of the viewport */
   gap: 10px;
   background-color: #f2f6ff;
 }
@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  gap: 10px;
+  gap: 5px;
   /* margin: 5px 0 0 5px; */
 }
 .part {
@@ -160,7 +160,7 @@
   max-width: 100%;
 }
 
-.no-data{
+.no-data {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,4 +189,3 @@
   margin: 4px 0;
   font-size: 14px;
 }
-
