@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { HttpClient } from "@angular/common/http";
-import { interval, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { interval, Subscription } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import { MatCardModule } from "@angular/material/card";
 import { IndMapComponent } from "../ind-map/ind-map.component";
 import { LiveFeedComponent } from "../live-feed/live-feed.component";
@@ -42,9 +42,17 @@ interface Alert {
 export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
   alerts: Alert[] = [];
   private alertSubscription!: Subscription;
-  private apiUrl = 'http://127.0.0.1:8000/api/alerts/bss1'; // Replace with your actual API endpoint
+  private apiUrl = "http://127.0.0.1:8000/api/alerts/bss1"; // Replace with your actual API endpoint
+  currentTime: string;
+  oneMinuteBefore: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const now = new Date();
+    this.currentTime = now.toISOString(); // Current time in ISO format
+
+    const oneMinuteAgo = new Date(now.getTime() - 60 * 1000); // Subtract 1 minute (60 seconds * 1000 milliseconds)
+    this.oneMinuteBefore = oneMinuteAgo.toISOString();
+  }
 
   ngOnInit(): void {
     // Fetch notifications every 10 seconds
@@ -57,9 +65,7 @@ export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
   }
 
   dismissAlert(alertId: number): void {
-    this.alerts = this.alerts.filter(
-      (alert) => alert.id !== alertId
-    );
+    this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
   }
 
   ngOnDestroy(): void {

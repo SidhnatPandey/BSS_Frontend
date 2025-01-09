@@ -11,8 +11,8 @@
       <mat-grid-tile colspan="3" rowspan="8" class="metadata">
         <div class="meta">
           <mat-card class="card first-card">
-            <mat-card-content style="overflow-y: scroll;"> 
-<!--               <p class="notification red">[!] Enemy troops detected at 1125 Hrs</p>
+            <mat-card-content style="overflow-y: scroll">
+              <!--               <p class="notification red">[!] Enemy troops detected at 1125 Hrs</p>
               <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
               <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
               <p class="notification red">[^] Drone recon launched at 1137 Hrs</p>
@@ -32,46 +32,64 @@
                 </button>
               </div>
             </mat-card-content>
-  
           </mat-card>
-        <!-- Enemy Movement Summary -->
-        <mat-card class="card second-card">
-          <!-- <button mat-flat-button style="width: 5rem;" >Open</button> -->
-        <mat-card-content>
-        <div class="summary">
-          <p>
-            <strong>Enemy movement summary:</strong> soldiers detected by multiple
-            optical sensors at &lt;location&gt;
-          </p>
-          <p><strong>DRONE ></strong> Tracking 10 enemy personnel</p>
+          <!-- Enemy Movement Summary -->
+          <mat-card class="card second-card">
+            <!-- <button mat-flat-button style="width: 5rem;" >Open</button> -->
+            <mat-card-content>
+              <div class="summary">
+                <p>
+                  <strong>Enemy movement summary:</strong> soldiers detected by
+                  multiple optical sensors at &lt;location&gt;
+                </p>
+                <p><strong>DRONE ></strong> Tracking 10 enemy personnel</p>
+              </div>
+              <!-- Sensor Details -->
+              <div class="sensors">
+                <div class="child-sensor">
+                  <h5 style="font-weight: bold">PTZ</h5>
+                  <p>
+                    10 soldiers in field of view <br />
+                    <span class="small-text">
+                      s-{{ oneMinuteBefore | date : "short" }} <br />
+                      e-{{ currentTime | date : "short" }}</span
+                    >
+                  </p>
+                </div>
+                <div class="child-sensor">
+                  <h5 style="font-weight: bold">RAZAK</h5>
+                  <p>
+                    3 soldiers in field of view <br />
+                    <span class="small-text">
+                      s-{{ oneMinuteBefore | date : "short" }} <br />
+                      e-{{ currentTime | date : "short" }}</span
+                    >
+                  </p>
+                </div>
+                <div class="child-sensor">
+                  <h5 style="font-weight: bold">HHTI</h5>
+                  <p>
+                    1 soldier in field of view<br />
+                    <span class="small-text">
+                      s-{{ oneMinuteBefore | date : "short" }} <br />
+                      e-{{ currentTime | date : "short" }}</span
+                    >
+                  </p>
+                </div>
+                <div class="child-sensor">
+                  <h5 style="font-weight: bold">LORROS</h5>
+                  <p>
+                    2 soldier in field of view<br />
+                    <span class="small-text">
+                      s-{{ oneMinuteBefore | date : "short" }} <br />
+                      e-{{ currentTime | date : "short" }}</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
         </div>
-        <!-- Sensor Details -->
-        <div class="sensors">
-          <div class="child-sensor">
-            <h5 style="font-weight: bold">PTZ</h5>
-            <p>
-              10 soldiers in field of view Start Time<br />
-              End Time
-            </p>
-          </div>
-          <div class="child-sensor">
-            <h5 style="font-weight: bold">RAZAK</h5>
-            <p>
-              3 soldiers in field of view Start Time<br />
-              End Time
-            </p>
-          </div>
-          <div class="child-sensor">
-            <h5 style="font-weight: bold">HHTI</h5>
-            <p>
-              1 soldier in field of view Start Time<br />
-              End Time
-            </p>
-          </div>
-        </div>
-        </mat-card-content>
-      </mat-card>
-      </div>
       </mat-grid-tile>
 
       <mat-grid-tile colspan="9" rowspan="3" class="mission-control-wrapper">
@@ -82,7 +100,7 @@
       </mat-grid-tile>
       <mat-grid-tile colspan="3" rowspan="3" class="map">
         <!-- <app-ind-map></app-ind-map> -->
-         <Img src="../../../assets/image.png" >
+        <Img src="../../../assets/image.png" />
       </mat-grid-tile>
     </mat-grid-list>
   </div>
