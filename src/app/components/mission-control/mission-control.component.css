@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  /*  margin-bottom: 1rem; */
 }
 
 .mission-header .mission-title {
@@ -48,9 +48,10 @@
   width: 30%;
   gap: 10px;
   padding: 0.5rem;
+  justify-content: center;
 }
 
-.live-vedio-analysis-section{
+.live-vedio-analysis-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +61,7 @@
 .mission-btn {
   font-size: 14px;
   font-weight: bold;
-  width: 100%;
+  width: 80%;
   padding: 0.8rem;
   text-transform: uppercase;
   border-radius: 4px;
@@ -93,9 +94,36 @@
   flex-direction: column;
 }
 
-.meta-section{
+.meta-section {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.incident-report {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  max-height: 240px;
+  width: 100%;
+  line-height: 1rem;
+}
+
+h2,
+h3 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+p {
+  margin: 10px 0;
 }

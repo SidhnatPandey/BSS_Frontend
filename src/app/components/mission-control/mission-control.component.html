@@ -26,7 +26,76 @@
       </button> -->
     </div>
     <div class="live-vedio-analysis-section">
-      <h4>Live video Intelligence</h4>
+      <div class="incident-report">
+        <h2>Incident Report</h2>
+        <p><strong>Date/Time:</strong> {{ incidentReport.dateTime }}</p>
+        <p><strong>Location:</strong> {{ incidentReport.location }}</p>
+        <p><strong>Source:</strong> {{ incidentReport.source }}</p>
+
+        <h3>Incident Overview</h3>
+        <p>
+          <strong>Summary:</strong>
+          {{ incidentReport.incidentOverview.summary }}
+        </p>
+        <ul>
+          <li *ngFor="let detail of incidentReport.incidentOverview.details">
+            {{ detail }}
+          </li>
+        </ul>
+
+        <h3>Regional Context</h3>
+        <p>
+          <strong>Significance:</strong>
+          {{ incidentReport.regionalContext.significance }}
+        </p>
+        <ul>
+          <li
+            *ngFor="let history of incidentReport.regionalContext.recentHistory"
+          >
+            {{ history }}
+          </li>
+        </ul>
+
+        <h3>Threat Analysis</h3>
+        <p><strong>Threat Indicators:</strong></p>
+        <ul>
+          <li
+            *ngFor="
+              let threat of incidentReport.threatAnalysis.threatIndicators
+            "
+          >
+            {{ threat }}
+          </li>
+        </ul>
+        <p><strong>Non-Threat Indicators:</strong></p>
+        <ul>
+          <li
+            *ngFor="
+              let nonThreat of incidentReport.threatAnalysis.nonThreatIndicators
+            "
+          >
+            {{ nonThreat }}
+          </li>
+        </ul>
+        <p>
+          <strong>Threat Level:</strong>
+          {{ incidentReport.threatAnalysis.threatLevel }}
+        </p>
+
+        <h3>Recommended Actions</h3>
+        <p>
+          <strong>Surveillance:</strong>
+          {{ incidentReport.recommendedActions.surveillance }}
+        </p>
+        <p>
+          <strong>Intel Validation:</strong>
+          {{ incidentReport.recommendedActions.intelValidation }}
+        </p>
+        <p>
+          <strong>Defensive Measures:</strong>
+          {{ incidentReport.recommendedActions.defensiveMeasures }}
+        </p>
+      </div>
     </div>
   </div>
 </div>
