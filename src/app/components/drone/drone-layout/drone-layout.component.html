@@ -25,7 +25,7 @@
       </div>
       <div class="middle-section">
         <div class="btn-group">
-          <button
+          <!-- <button
             mat-flat-button
             class="mission-btn"
             [disabled]="
@@ -35,17 +35,25 @@
             *ngIf="!(hideBtn && missionType == 'interceptor')"
           >
             Launch Recon Mission
-            <span class="btn-active" *ngIf="missionType == 'recon'"
-              >Active</span
-            >
+            <span class="btn-active" *ngIf="missionType == 'recon'">Active</span>
+          </button> -->
+          <button type="button" class="btn btn-primary mission-btn btn-lg"
+          [disabled]="
+              !selectedDrone?.isOnline || missionType == 'interceptor'
+            "
+            (click)="hanldeMissionRecon()"
+            *ngIf="!(hideBtn && missionType == 'interceptor')"
+            style="border-radius: 25px;"
+          >Launch Recon Mission
+            <span class="btn-active" *ngIf="missionType == 'recon'">Active</span>
           </button>
 
-          <button
-            mat-flat-button
-            class="mission-btn"
+          <button type="button" 
+            class="btn btn-primary mission-btn btn-lg"
             [disabled]="!selectedDrone?.isOnline"
             (click)="hanldeInterceptor()"
             *ngIf="!(hideBtn && missionType == 'recon')"
+            style="border-radius: 25px;"
           >
             Launch Intreceptor
             <span class="btn-active" *ngIf="missionType == 'interceptor'"
@@ -53,10 +61,11 @@
             >
           </button>
           <button
-            mat-flat-button
-            class="abort-btn"
+          type="button" 
+          class="btn btn-primary abort-btn btn-lg"
             *ngIf="!!missionType"
             (click)="abortMission()"
+            style="border-radius: 25px;"
           >
             Abort Mission
           </button>

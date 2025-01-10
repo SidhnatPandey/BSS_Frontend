@@ -45,21 +45,24 @@
   <div class="photo-grid">
     <mat-card
       class="photo-card"
-      style="cursor: pointer"
       *ngFor="let photo of photos; let i = index"
       (click)="navigateToLiveFeed(photo)"
+      [ngClass]="{ 'highlight-border': i === activeAlertIndex, 'shake': i === activeAlertIndex }"
     >
-      <div class="photo-wrapper">
-        <!-- Label and Last Update -->
-        <div class="photo-header">
-          <h4 class="photo-label">{{ photo.label }}</h4>
-          <p class="photo-update">Last update {{ photo.lastUpdate }} sec ago</p>
-        </div>
+      <div class="photo-wrapper ">
         <!-- Photo -->
         <img [src]="photo.url" [alt]="photo.label" />
+        <!-- Label and Last Update -->
+        <!-- <div class="photo-header">
+          <h4 class="photo-label">{{ photo.label }}</h4>
+        </div> -->
+        
+        <p class="timer-overlay">Last update {{ photo.lastUpdate }} sec ago</p>
+          <h2 class="overlay">{{ photo.label }}</h2>
         <!-- Active alert overlay -->
         <div class="alert-overlay" *ngIf="i === activeAlertIndex">
-          <div class="alert-animation">ALERT - Movement Detected</div>
+          <div class="alert-animation">
+            <p style="margin-top: 50px;" >ALERT - Movement Detected</p></div>
         </div>
       </div>
     </mat-card>

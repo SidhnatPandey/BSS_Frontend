@@ -90,6 +90,60 @@
 .photo-card {
   padding: 10px;
   text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.photo-card:hover {
+  background-color: rgba(255, 223, 186, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.timer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-weight: bold;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.part {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  transition: border 0.1s ease;
+}
+
+.highlight-border {
+  border: 5px solid rgb(212, 16, 16); 
 }
 
 .photo-wrapper {
@@ -98,14 +152,13 @@
 
 .photo-header {
   display: flex;
-  justify-content: space-between; /* Left-align label and right-align update text */
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .photo-label {
   margin: 0;
-  font-size: 16px;
   font-weight: bold;
   text-align: left;
 }
@@ -113,7 +166,7 @@
 .photo-update {
   margin: 0;
   font-size: 12px;
-  color: #777; /* Subtle color for "Last update" text */
+  color: #777;
   text-align: right;
 }
 
@@ -129,19 +182,18 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 108, 108, 0.51); /* Semi-transparent red */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  pointer-events: none; /* Allow clicks to pass through to the card */
+  pointer-events: none;
 }
 
 .alert-animation {
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  color: rgb(212, 16, 16);
   text-transform: uppercase;
-  animation: blink 1s infinite; /* Continuous blinking animation */
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
