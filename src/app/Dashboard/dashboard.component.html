@@ -5,7 +5,12 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <mat-icon class="summary-icon location-icon">location_on</mat-icon>
+          <!-- <mat-icon class="summary-icon location-icon">location_on</mat-icon> -->
+          <img
+            src="assets/icons/location.png"
+            class="summary-icon location-icon"
+            alt="Icon"
+          />
         </div>
         <div class="text-column">
           <h3>Locations</h3>
@@ -16,11 +21,17 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <mat-icon
+          <!-- <mat-icon
             class="summary-icon alert-icon"
             [ngClass]="{ shake: alertCount > 0 }"
             >notifications</mat-icon
-          >
+          > -->
+          <img
+            class="summary-icon alert-icon"
+            src="assets/icons/notification.png"
+            [ngClass]="{ shake: alertCount > 0 }"
+            alt="Icon"
+          />
         </div>
         <div class="text-column">
           <h3>Active Alerts</h3>
@@ -31,7 +42,12 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <mat-icon class="summary-icon mission-icon">task</mat-icon>
+          <!--  <mat-icon class="summary-icon mission-icon">task</mat-icon> -->
+          <img
+            src="assets/icons/task.png"
+            alt="Icon"
+            class="summary-icon mission-icon"
+          />
         </div>
         <div class="text-column">
           <h3>Active Missions</h3>

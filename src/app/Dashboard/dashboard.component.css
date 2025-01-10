@@ -47,7 +47,6 @@
   color: #d92b2b; /* Material Blue */
   min-width: 80px; /* Ensure sufficient width for larger icons */
   min-height: 80px; /* Ensure consistent height */
-  padding-top: 1rem; /* Adjust vertical alignment */
 }
 
 .location-icon {
