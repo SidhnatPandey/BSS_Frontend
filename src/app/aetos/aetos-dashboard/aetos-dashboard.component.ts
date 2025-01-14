@@ -6,46 +6,41 @@ import { MatIconModule } from "@angular/material/icon";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-aetos-dashboard',
+  selector: "app-aetos-dashboard",
   standalone: true,
-  imports: [
-    FontAwesomeModule,
-    CommonModule,
-    MatCardModule,
-    MatIconModule,
-  ],
-  templateUrl: './aetos-dashboard.component.html',
-  styleUrl: './aetos-dashboard.component.css'
+  imports: [FontAwesomeModule, CommonModule, MatCardModule, MatIconModule],
+  templateUrl: "./aetos-dashboard.component.html",
+  styleUrl: "./aetos-dashboard.component.css",
 })
 export class AetosDashboardComponent {
   photos = [
     {
       label: "BSS 1",
-      url: "assets/bss/photo1.jpg",
+      url: "assets/bss/b1.jpg",
       lastUpdate: 0,
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
     {
       label: "BSS 2",
-      url: "assets/bss/photo2.jpg",
+      url: "assets/bss/b4.png",
       lastUpdate: 0,
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
     {
       label: "BSS 3",
-      url: "assets/bss/photo3.jpg",
+      url: "assets/bss/b3.jpg",
       lastUpdate: 0,
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
     {
       label: "BSS 4",
-      url: "assets/bss/photo4.jpg",
+      url: "assets/bss/b2.png",
       lastUpdate: 0,
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
     {
       label: "BSS 5",
-      url: "assets/bss/photo5.jpg",
+      url: "assets/bss/b5.png",
       lastUpdate: 0,
       videoFeedUrl: "http://127.0.0.1:8000/api/ptz_video_feed",
     },
