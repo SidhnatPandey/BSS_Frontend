@@ -1,0 +1,35 @@
+<div class="live-feed-container">
+  <mat-grid-list cols="12" rowHeight="fit" class="main-grid">
+    <mat-grid-tile colspan="9" rowspan="8" class="center-content">
+      <app-live-feed class="full"></app-live-feed>
+    </mat-grid-tile>
+  
+    <mat-grid-tile colspan="3" rowspan="8" class="metadata">
+      <div class="meta">
+        <div class="card first-card">
+          <mat-card-content *ngIf="alerts.length > 0" style="overflow-y: scroll">
+            <div *ngFor="let alert of alerts" class="alert alert-danger" role="alert">
+              <p>{{ alert.message }}</p>
+              <i class="fa fa-close" style="cursor: pointer;" (click)="dismissAlert(alert.id)">  </i>
+            </div>
+          </mat-card-content>
+          <div *ngIf="alerts.length == 0" class="no-alert"> 
+            <strong>No Alerts</strong>
+          </div>
+        </div>
+        <app-meta-data></app-meta-data>
+        
+      </div>
+    </mat-grid-tile>
+  
+    <mat-grid-tile colspan="9" rowspan="3" class="mission-control-wrapper">
+      <app-mission-control
+        class="full"
+        style="background-color: #c3c3c3"
+      ></app-mission-control>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" rowspan="3" class="map">
+      <Img src="assets/bss/map.png" />
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

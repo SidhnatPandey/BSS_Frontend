@@ -1,0 +1,70 @@
+
+<div class="dashboard-container">
+  <div class="summary-grid">
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <img
+            src="assets/icons/location.png"
+            class="summary-icon location-icon"
+            alt="Icon"
+          />
+        </div>
+        <div class="text-column">
+          <h3>Locations</h3>
+          <p>6</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <img
+            class="summary-icon alert-icon"
+            src="assets/icons/notification.png"
+            [ngClass]="{ shake: alertCount > 0 }"
+            alt="Icon"
+          />
+        </div>
+        <div class="text-column">
+          <h3>Active Alerts</h3>
+          <p>{{ alertCount }}</p>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="summary-card">
+      <div class="card-content">
+        <div class="icon-column">
+          <img
+            src="assets/icons/task.png"
+            alt="Icon"
+            class="summary-icon mission-icon"
+          />
+        </div>
+        <div class="text-column">
+          <h3>Active Missions</h3>
+          <p>0</p>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="photo-grid">
+    <mat-card
+      class="photo-card"
+      *ngFor="let photo of photos; let i = index"
+      (click)="navigateToLiveFeed(photo)"
+      [ngClass]="{ 'highlight-border': i === activeAlertIndex, 'shake': i === activeAlertIndex }"
+    >
+      <div class="photo-wrapper ">
+        <img [src]="photo.url" [alt]="photo.label" />
+        
+        <p class="timer-overlay">Last update {{ photo.lastUpdate }} sec ago</p>
+          <h2 class="overlay">{{ photo.label }}</h2>
+        <div class="alert-overlay" *ngIf="i === activeAlertIndex">
+          <div class="alert-animation">
+            <p style="margin-top: 50px;" >ALERT - Movement Detected</p></div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

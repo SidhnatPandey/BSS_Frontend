@@ -1,28 +1,23 @@
 import { Component, OnInit } from "@angular/core";
-import { SidebarComponent } from "../Sidebar/sidebar.component";
-
 import { CommonModule } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { HeaderComponent } from "../header/header.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-dashboard",
+  selector: 'app-aetos-dashboard',
   standalone: true,
-  templateUrl: "./dashboard.component.html",
-  styleUrl: "./dashboard.component.css",
   imports: [
     FontAwesomeModule,
     CommonModule,
-    SidebarComponent,
-    HeaderComponent,
     MatCardModule,
     MatIconModule,
   ],
+  templateUrl: './aetos-dashboard.component.html',
+  styleUrl: './aetos-dashboard.component.css'
 })
-export class DashboardComponent {
+export class AetosDashboardComponent {
   photos = [
     {
       label: "BSS 1",
@@ -72,7 +67,7 @@ export class DashboardComponent {
     setTimeout(() => {
       this.activeAlertIndex = 2; // Index of the card where the alert should appear
       this.alertCount++;
-    }, 8000);
+    }, 5000);
   }
 
   startRefreshTimer(): void {
@@ -88,7 +83,7 @@ export class DashboardComponent {
 
   navigateToLiveFeed(photo: any): void {
     // Navigate to /live-feed with optional query parameters or state
-    this.router.navigate(["/live-feed"], {
+    this.router.navigate(["/dashboard/aetos-live-feed"], {
       queryParams: { location: photo.label },
     });
   }

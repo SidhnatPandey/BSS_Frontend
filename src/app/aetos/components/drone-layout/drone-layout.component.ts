@@ -2,13 +2,11 @@ import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { HeaderComponent } from "../../header/header.component";
-import { SidebarComponent } from "../../../Sidebar/sidebar.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { DroneDialogComponent } from "../drone-dialog/drone-dialog.component";
+import Swal from "sweetalert2";
 
 interface Drone {
   name: string;
@@ -22,13 +20,10 @@ interface Drone {
     MatGridListModule,
     CommonModule,
     MatCardModule,
-    HeaderComponent,
-    SidebarComponent,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
-    DroneDialogComponent,
   ],
   templateUrl: "./drone-layout.component.html",
   styleUrl: "./drone-layout.component.css",
@@ -47,13 +42,15 @@ export class DroneLayoutComponent {
   gps: { latitude: number; longitude: number } = { latitude: 40.7128, longitude: 74.0060 };
 
   selectedDrone: Drone | null = null;
-  videoStreamUrl: string = "assets/video/drone.mp4";
+  videoStreamUrl: string = "http://127.0.0.1:8000/api/video_feed";
   readonly dialog = inject(MatDialog);
   missionType: string = "";
   hideBtn: boolean = false;
+  loading: boolean= false;
 
   ngOnInit(): void {
     this.updateValuesRandomly();
+    
   }
 
   updateValuesRandomly() {
@@ -84,22 +81,60 @@ export class DroneLayoutComponent {
   }
 
   openDialog(launchType: string) {
-    const dialogRef = this.dialog.open(DroneDialogComponent, {
-      data: { launchType },
-    });
+    // const dialogRef = this.dialog.open(DroneDialogComponent, {
+    //   data: { launchType },
+    // });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result && launchType !== "abort") {
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result && launchType !== "abort") {
+    //     this.missionType = launchType;
+    //     this.hideBtn = true;
+    //     this.loading = true;
+    //     setTimeout(() => this.loading = false,2000)
+    //   } else if (result && launchType === "abort") {
+    //     this.missionType = "";
+    //     this.hideBtn = false;
+    //   }
+    // });
+
+    Swal.fire({
+      html : `
+        <h2>Are you Sure?</h2>
+        <p>You want to proceed with this Flight Path!</p>
+        <img src="assets/bss/flight_path.png" style="height: 19rem" alt="flight path" />
+      `,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'teal',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.missionType = launchType;
         this.hideBtn = true;
-      } else if (result && launchType === "abort") {
-        this.missionType = "";
-        this.hideBtn = false;
-      }
-    });
+        this.loading = true;
+        setTimeout(() => this.loading = false,2000)
+      }
+    });
+  
   }
 
   abortMission() {
-    this.openDialog("abort");
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to abort the mission!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'teal',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.missionType = "";
+        this.hideBtn = false;
+      }
+    });
   }
 }

@@ -58,6 +58,6 @@ export class MissionControlComponent {
     };
   }
   nevigateToLaunchDrone() {
-    this.router.navigate(["/drone-feed"]);
+    this.router.navigate(["/dashboard/aetos-drone-feed"]);
   }
 }

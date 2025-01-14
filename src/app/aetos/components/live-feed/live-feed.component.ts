@@ -18,6 +18,7 @@ export interface Tile {
   styleUrl: "./live-feed.component.css",
 })
 export class LiveFeedComponent {
+  isLoading: boolean = true;
   tiles: Tile[] = [
     { text: "One", cols: 3, rows: 1, color: "lightblue" },
     { text: "Two", cols: 1, rows: 2, color: "lightgreen" },
@@ -35,6 +36,7 @@ export class LiveFeedComponent {
   ngOnInit(): void {
     // Pre-select PTZ sensor as the default
     this.selectSensor({ name: 'PTZ', data: 'Live data from PTZ' });
+    setTimeout(() => this.isLoading = false, 3000);
   }
   selectSensor(sensor: { name: string; data: string }) {
     this.selectedSensor = sensor;

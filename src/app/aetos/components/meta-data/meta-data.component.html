@@ -1,0 +1,58 @@
+<div class="card-wrapper">
+    <div class="card meta-data-card">
+        <div class="heading"><h5 style="color: red;">Meta Data</h5></div>
+        <hr>
+        <div class="content">
+          <div class="summary">
+            <p>
+              <strong >Enemy movement summary:</strong> soldiers detected by
+              multiple optical sensors near border area.
+            </p>
+            <!-- <p><strong>DRONE ></strong> Tracking 10 enemy personnel</p> -->
+          </div>
+          <!-- Sensor Details -->
+          <div class="sensors">
+            <div class="child-sensor">
+              <h5>PTZ</h5>
+              <p>
+                2 soldiers in field of view <br />
+                <span class="small-text">
+                  <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
+                 <strong>End</strong>: {{ currentTime | date : "short" }}</span
+                >
+              </p>
+            </div>
+            <div class="child-sensor">
+              <h5>RAZAK</h5>
+              <p>
+                2 soldiers in field of view <br />
+                <span class="small-text">
+                  <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
+                 <strong>End</strong>: {{ currentTime | date : "short" }}</span
+                >
+              </p>
+            </div>
+            <div class="child-sensor">
+              <h5>HHTI</h5>
+              <p>
+                3 soldier in field of view<br />
+                <span class="small-text">
+                  <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
+                 <strong>End</strong>: {{ currentTime | date : "short" }}</span
+                >
+              </p>
+            </div>
+            <div class="child-sensor">
+              <h5 style="font-weight: bold;">LORROS</h5>
+              <p>
+                2 soldier in field of view<br />
+                <span class="small-text">
+                  <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
+                 <strong>End</strong>: {{ currentTime | date : "short" }}</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

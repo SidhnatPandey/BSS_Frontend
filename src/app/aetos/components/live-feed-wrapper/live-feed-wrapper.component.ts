@@ -4,20 +4,17 @@ import { HttpClient } from "@angular/common/http";
 import { interval, Subscription } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { MatCardModule } from "@angular/material/card";
-import { IndMapComponent } from "../ind-map/ind-map.component";
 import { LiveFeedComponent } from "../live-feed/live-feed.component";
-import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { CommonModule } from "@angular/common";
 import { JsonPipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
-import { HeaderComponent } from "../header/header.component";
 import { MissionControlComponent } from "../mission-control/mission-control.component";
-import { SidebarComponent } from "../../Sidebar/sidebar.component";
+import { MetaDataComponent } from "../meta-data/meta-data.component";
 
 interface Alert {
   id: number;
   message: string;
-  timestamp: string; // Or Date if you parse it
+  timestamp: string;
 }
 
 @Component({
@@ -27,14 +24,11 @@ interface Alert {
     MatCardModule,
     CommonModule,
     MatGridListModule,
-    IndMapComponent,
     LiveFeedComponent,
-    MetaDataComponent,
     JsonPipe,
     MatButtonModule,
-    HeaderComponent,
     MissionControlComponent,
-    SidebarComponent,
+    MetaDataComponent
   ],
   templateUrl: "./live-feed-wrapper.component.html",
   styleUrls: ["./live-feed-wrapper.component.css"], // Corrected styleUrls
@@ -56,7 +50,7 @@ export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Fetch notifications every 10 seconds
-    this.alertSubscription = interval(10000)
+    this.alertSubscription = interval(5000)
       .pipe(switchMap(() => this.http.get<Alert[]>(this.apiUrl)))
       .subscribe((newAlerts) => {
         // Add new notifications to the stack

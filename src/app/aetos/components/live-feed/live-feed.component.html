@@ -1,41 +1,30 @@
 <div class="box">
   <div class="left-section">
-    <div
-      class="part"
-      [class.selected]="selectedSensor?.name === 'PTZ'"
-      (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })"
-    >
+    <div class="part" [class.selected]="selectedSensor?.name === 'PTZ'"
+      (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })">
       <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
       <div class="overlay">PTZ</div>
     </div>
-    <div
-      class="part"
-      [class.selected]="selectedSensor?.name === 'HSTI'"
-      (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })"
-    >
+    <div class="part" [class.selected]="selectedSensor?.name === 'HSTI'"
+      (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })">
       <img [src]="videoStreamUrlHsti" alt="Live Stream" class="video-side" />
       <div class="overlay">HHTI</div>
     </div>
-    <div
-      class="part"
-      [class.selected]="selectedSensor?.name === 'RAJAK'"
-      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
-    >
+    <div class="part" [class.selected]="selectedSensor?.name === 'RAJAK'"
+      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })">
       <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video-side" />
       <div class="overlay">RAZAK</div>
     </div>
-    <div
-      class="part"
-      [class.selected]="selectedSensor?.name === 'LORROS'"
-      (click)="
+    <div class="part" [class.selected]="selectedSensor?.name === 'LORROS'" (click)="
         selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
-      "
-    >
+      ">
       <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
       <div class="overlay">LORROS</div>
     </div>
   </div>
   <div class="right-section">
+
+      <div *ngIf="isLoading" class="loader"></div>
     <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
   </div>
 </div>

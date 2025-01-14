@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DroneDialogComponent } from './drone-dialog.component';
+import { AetosDashboardComponent } from './aetos-dashboard.component';
 
-describe('DroneDialogComponent', () => {
-  let component: DroneDialogComponent;
-  let fixture: ComponentFixture<DroneDialogComponent>;
+describe('AetosDashboardComponent', () => {
+  let component: AetosDashboardComponent;
+  let fixture: ComponentFixture<AetosDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DroneDialogComponent]
+      imports: [AetosDashboardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DroneDialogComponent);
+    fixture = TestBed.createComponent(AetosDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

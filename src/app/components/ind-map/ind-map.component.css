@@ -1,7 +1,0 @@
-google-map {
-    display: flex;
-    height: 100%; /* Full height of the parent container */
-    width: 100%; /* Full width of the parent container */
-    border: 1px solid #ccc; /* Optional for visual debugging */
-  }
-  
