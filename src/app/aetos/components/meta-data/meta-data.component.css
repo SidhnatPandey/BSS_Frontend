@@ -28,7 +28,16 @@ hr{
     background-color: #ffffff;
     border-radius: 6px;
     border: 1px solid lightgrey;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
   }
+  
+  .child-sensor:hover {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+  
   .child-sensor h5{
     font-weight: 500;
     font-size: 17px;
