@@ -5,7 +5,6 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <!-- <mat-icon class="summary-icon location-icon">location_on</mat-icon> -->
           <img
             src="assets/icons/location.png"
             class="summary-icon location-icon"
@@ -21,11 +20,6 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <!-- <mat-icon
-            class="summary-icon alert-icon"
-            [ngClass]="{ shake: alertCount > 0 }"
-            >notifications</mat-icon
-          > -->
           <img
             class="summary-icon alert-icon"
             src="assets/icons/notification.png"
@@ -42,7 +36,6 @@
     <mat-card class="summary-card">
       <div class="card-content">
         <div class="icon-column">
-          <!--  <mat-icon class="summary-icon mission-icon">task</mat-icon> -->
           <img
             src="assets/icons/task.png"
             alt="Icon"
@@ -68,10 +61,6 @@
       <div class="photo-wrapper ">
         <!-- Photo -->
         <img [src]="photo.url" [alt]="photo.label" />
-        <!-- Label and Last Update -->
-        <!-- <div class="photo-header">
-          <h4 class="photo-label">{{ photo.label }}</h4>
-        </div> -->
         
         <p class="timer-overlay">Last update {{ photo.lastUpdate }} sec ago</p>
           <h2 class="overlay">{{ photo.label }}</h2>

@@ -39,7 +39,7 @@ export class DroneLayoutComponent {
   altitude: number = 120;
   speed: number = 35;
   heading: string = "20°";
-  gps: { latitude: number; longitude: number } = { latitude: 40.7128, longitude: 74.0060 };
+  gps: { latitude: number; longitude: number } = { latitude: 40.712, longitude: 74.006 };
 
   selectedDrone: Drone | null = null;
   videoStreamUrl: string = "http://127.0.0.1:8000/api/video_feed";
@@ -59,8 +59,8 @@ export class DroneLayoutComponent {
       this.speed = Math.floor(Math.random() * (50 - 40 + 1)) + 40;
       this.heading = `${Math.floor(Math.random() * 360)}°`; 
       this.gps = {
-        latitude: +(Math.random() * 50).toFixed(6) + 100, 
-        longitude: +(Math.random() * 10).toFixed(6) + 100,
+      latitude: +(Math.random() * 50).toFixed(3) + 100,
+      longitude: +(Math.random() * 10).toFixed(3) + 100,
       };
     }, 1000);
   }
@@ -113,7 +113,7 @@ export class DroneLayoutComponent {
       if (result.isConfirmed) {
         this.missionType = launchType;
         this.hideBtn = true;
-        this.loading = true;
+        // this.loading = true;
         setTimeout(() => this.loading = false,2000)
       }
     });

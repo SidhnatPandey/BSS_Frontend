@@ -1,18 +1,20 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { DroneLayoutComponent } from "../drone-layout/drone-layout.component";
 
 @Component({
   selector: "app-mission-control",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DroneLayoutComponent],
   templateUrl: "./mission-control.component.html",
   styleUrl: "./mission-control.component.css",
 })
 export class MissionControlComponent {
   incidentReport: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog) {
     this.incidentReport = {
       dateTime: "2025-01-09T14:45:00Z",
       location: "Sector 14B, Border Region near Sempira Valley",

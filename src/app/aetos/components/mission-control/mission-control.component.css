@@ -127,3 +127,13 @@ ul {
 p {
   margin: 10px 0;
 }
+
+.custom-dialog {
+  max-width: 80%;
+  width: 80%;
+  height: 90vh;
+}
+
+.custom-dialog .modal-content {
+  height: 100%;
+}
