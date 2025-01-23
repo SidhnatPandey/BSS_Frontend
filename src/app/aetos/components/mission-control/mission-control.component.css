@@ -137,3 +137,27 @@ p {
 .custom-dialog .modal-content {
   height: 100%;
 }
+
+.mini-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 500px !important;
+  height: 350px !important;
+  z-index: 1050; /* Ensure it's above other elements */
+  transition: all 0.3s ease-in-out;
+}
+
+.mini-player .modal-content {
+  height: 100%;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.mini-player .modal-header {
+  padding: 5px 10px; /* Compact header */
+  font-size: 14px;
+}
+
+.mini-player .modal-body {
+  height: calc(100% - 40px); /* Adjust for the header height */
+}

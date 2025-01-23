@@ -13,6 +13,7 @@ import { DroneLayoutComponent } from "../drone-layout/drone-layout.component";
 })
 export class MissionControlComponent {
   incidentReport: any;
+  isMiniPlayer = false;
 
   constructor(private router: Router, private dialog: MatDialog) {
     this.incidentReport = {
@@ -61,5 +62,8 @@ export class MissionControlComponent {
   }
   nevigateToLaunchDrone() {
     this.router.navigate(["/dashboard/aetos-drone-feed"]);
+  }
+  toggleMiniPlayer() {
+    this.isMiniPlayer = !this.isMiniPlayer;
   }
 }

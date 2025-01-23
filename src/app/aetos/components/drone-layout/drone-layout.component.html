@@ -1,5 +1,5 @@
 <div class="box">
-  <div class="left-section">
+  <div class="left-section" *ngIf="!isMiniplayerMode">
     <ng-container *ngFor="let drone of drones">
       <div
         class="part"
@@ -20,24 +20,26 @@
     </ng-container>
   </div>
   <div class="middle-section">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary mission-btn btn-lg"
-      [disabled]="
-          !selectedDrone?.isOnline || missionType == 'interceptor'
-        "
+    <div class="btn-group" *ngIf="!isMiniplayerMode">
+      <button
+        type="button"
+        class="btn btn-primary mission-btn btn-lg"
+        [disabled]="!selectedDrone?.isOnline || missionType == 'interceptor'"
         (click)="hanldeMissionRecon()"
         *ngIf="!(hideBtn && missionType == 'interceptor')"
-        style="border-radius: 25px;"
-      >Launch Recon Mission
+        style="border-radius: 25px"
+      >
+        Launch Recon Mission
         <span class="btn-active" *ngIf="missionType == 'recon'">Active</span>
       </button>
 
-      <button type="button" 
+      <button
+        type="button"
         class="btn btn-primary mission-btn btn-lg"
         [disabled]="!selectedDrone?.isOnline"
         (click)="hanldeInterceptor()"
         *ngIf="!(hideBtn && missionType == 'recon')"
-        style="border-radius: 25px;"
+        style="border-radius: 25px"
       >
         Launch Intreceptor
         <span class="btn-active" *ngIf="missionType == 'interceptor'"
@@ -45,11 +47,11 @@
         >
       </button>
       <button
-      type="button" 
-      class="btn btn-primary abort-btn btn-lg"
+        type="button"
+        class="btn btn-primary abort-btn btn-lg"
         *ngIf="!!missionType"
         (click)="abortMission()"
-        style="border-radius: 25px;"
+        style="border-radius: 25px"
       >
         Abort Mission
       </button>
@@ -67,26 +69,35 @@
         <source src="assets/video/set10.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video> -->
-      <div *ngIf="loading && (missionType == 'recon' || missionType == 'interceptor')" class="loader"></div>
-      <img  *ngIf="(missionType == 'recon' || missionType == 'interceptor')" [src]="videoStreamUrl" alt="Live Stream" class="video-side" />
+      <div
+        *ngIf="
+          loading && (missionType == 'recon' || missionType == 'interceptor')
+        "
+        class="loader"
+      ></div>
+      <img
+        *ngIf="missionType == 'recon' || missionType == 'interceptor'"
+        [src]="videoStreamUrl"
+        alt="Live Stream"
+        class="video-side"
+      />
       <p
-        *ngIf="(missionType != 'recon' && missionType != 'interceptor')"
+        *ngIf="missionType != 'recon' && missionType != 'interceptor'"
         style="margin-top: 20%; font-size: larger"
       >
-        No Drone Feed Available, Please start the mission to see the Drone
-        Feed!
+        No Drone Feed Available, Please start the mission to see the Drone Feed!
       </p>
     </div>
   </div>
-  <div class="right-section">
-    <div class="card flight-card"> 
-      <h5 style="color: red;">Flight Path</h5>
-      <hr>
+  <div class="right-section" *ngIf="!isMiniplayerMode">
+    <div class="card flight-card">
+      <h5 style="color: red">Flight Path</h5>
+      <hr />
       <img
         *ngIf="missionType == 'recon' || missionType == 'interceptor'"
         src="assets/bss/flight_path.png"
         alt="Flight path"
-        style="height: 85%;"
+        style="height: 85%"
         class="flight_path_image"
       />
       <!-- <div class="no-data" > -->
@@ -98,11 +109,11 @@
         No Drone Flight Path Available!
       </p>
     </div>
-    <div class="card meta-data-card"> 
-      <h5 style="color: red;">Drone Meta Data</h5>
-      <hr>
+    <div class="card meta-data-card">
+      <h5 style="color: red">Drone Meta Data</h5>
+      <hr />
       <div class="content">
-      <p
+        <p
           *ngIf="missionType != 'recon' && missionType != 'interceptor'"
           style="font-size: larger; margin-top: 20%"
           class="no-data flight_path_image"
@@ -129,9 +140,7 @@
             <p class="pragraph-section">
               <strong>Signal Strength:</strong> Strong (4 bars)
             </p>
-            <p class="pragraph-section">
-              <strong>Wind Speed:</strong> 12 km/h
-            </p>
+            <p class="pragraph-section"><strong>Wind Speed:</strong> 12 km/h</p>
           </div>
         </div>
       </div>
