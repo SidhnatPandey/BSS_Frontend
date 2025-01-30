@@ -52,4 +52,8 @@ export class LiveFeedComponent {
       this.videoStreamUrl = this.videoStreamUrlPtz;
     }
   }
+
+  openDialog(){
+    console.log("dialog opened")
+  }
 }

@@ -7,7 +7,10 @@
 }
 
 .live-feed-container{
-  padding-left: 40px;
+  /* margin-left: 40px; */
+  background-image: url(/assets/images/Background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* Add a gap between app-sidebar and live-wrapper */
 .sidebar {
@@ -208,4 +211,58 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* .card-wrapper{
+  padding: 0  10px;
+} */
+.heading{
+  text-align: center;
+  padding-top: 10px;
+}
+hr{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.content{
+  padding: 0 10px;
+}
+.sensors {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  font-size: large;
+  width: 100%;
+}
+
+.child-sensor {
+  padding: 10px;
+  flex: 1 1 45%;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid lightgrey;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.child-sensor:hover {
+  background-color: #f0f8ff;
+  border-color: #007bff;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.child-sensor h5{
+  font-weight: 500;
+  font-size: 17px;
+}
+.child-sensor .small-text {
+  font-size: 0.75rem;
+}
+p{
+  font-size: 14px;
+}
+.summary{
+  margin-top: 10px;
 }

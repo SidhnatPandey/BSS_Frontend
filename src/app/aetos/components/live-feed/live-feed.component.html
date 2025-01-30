@@ -3,28 +3,107 @@
     <div class="part" [class.selected]="selectedSensor?.name === 'PTZ'"
       (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })">
       <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
-      <div class="overlay">PTZ</div>
+        <div class="overlay">
+           <span style="padding: 1rem;">PTZ</span>
+          <button type="button"
+          class="btn btn-sm"  style="margin-top: -4.5rem; margin-right: -2rem;" data-toggle="modal" data-target="#ptz_vedio_dialog">
+            <img src="assets/icons/expand.png" style="width: 1.5rem;" />
+          </button>
+        </div>
+    </div>
+    <div class="modal fade" id="ptz_vedio_dialog" tabindex="-1" role="dialog" aria-labelledby="ptz_vedio_dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="part" [class.selected]="selectedSensor?.name === 'HSTI'"
       (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })">
       <img [src]="videoStreamUrlHsti" alt="Live Stream" class="video-side" />
-      <div class="overlay">HHTI</div>
+      <div class="overlay">
+        <span style="padding: 1rem;">HHTI</span>
+        <button type="button"
+          class="btn btn-sm"  style="margin-top: -4.5rem; margin-right: -2rem;" data-toggle="modal" data-target="#HHTI_vedio_dialog">
+            <img src="assets/icons/expand.png" style="width: 1.5rem;" />
+          </button>
+      </div>
+    </div>
+    <div class="modal fade" id="HHTI_vedio_dialog" tabindex="-1" role="dialog" aria-labelledby="HHTI_vedio_dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="part" [class.selected]="selectedSensor?.name === 'RAJAK'"
       (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })">
       <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video-side" />
-      <div class="overlay">RAZAK</div>
+      <div class="overlay">
+        <span style="padding: 1rem;">RAZAK</span>
+        <button type="button"
+          class="btn btn-sm"  style="margin-top: -4.5rem; margin-right: -2rem;" data-toggle="modal" data-target="#RAZAK_vedio_dialog">
+            <img src="assets/icons/expand.png" style="width: 1.5rem;" />
+          </button>
+      </div>
+    </div>
+    <div class="modal fade" id="RAZAK_vedio_dialog" tabindex="-1" role="dialog" aria-labelledby="RAZAK_vedio_dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video-side" />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="part" [class.selected]="selectedSensor?.name === 'LORROS'" (click)="
         selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
       ">
       <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
-      <div class="overlay">LORROS</div>
-    </div>
+      <div class="overlay">
+        <span style="padding: 1rem;">LORROS</span>
+        <button type="button"
+          class="btn btn-sm"  style="margin-top: -4.5rem; margin-right: -2rem;" data-toggle="modal" data-target="#LORROS_vedio_dialog">
+            <img src="assets/icons/expand.png" style="width: 1.5rem;" />
+          </button>
+      </div>
+    </div> 
   </div>
   <div class="right-section">
-
       <div *ngIf="isLoading" class="loader"></div>
     <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
+  </div>
+  <div class="modal fade" id="LORROS_vedio_dialog" tabindex="-1" role="dialog" aria-labelledby="LORROS_vedio_dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
+        </div>
+      </div>
+    </div>
   </div>
 </div>

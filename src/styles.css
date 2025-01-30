@@ -13,6 +13,20 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root {
+    --Dark : #020617;
+    --Primary: #0f172a;
+    --Secondary: #1e293b;
+    --Tertiary: #334155;
+    --Quaternary : #475569;
+    --Quinary: #64748b;
+    --Senary: #94a3b8;
+    --Septenary: #cbd5e1;
+    --Octonary: #e2e8f0;
+    --Nonary: #f1f5f9;
+    --Denary: #f8fafc;
+}
+
 /* Global custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
