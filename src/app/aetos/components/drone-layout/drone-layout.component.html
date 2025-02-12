@@ -93,13 +93,15 @@
     <div class="card flight-card">
       <h5 style="color: red">Flight Path</h5>
       <hr />
-      <img
+      <!-- <img
         *ngIf="missionType == 'recon' || missionType == 'interceptor'"
         src="assets/bss/flight_path.png"
         alt="Flight path"
         style="height: 85%"
         class="flight_path_image"
-      />
+      /> -->
+      <app-drone-map *ngIf="missionType == 'recon' || missionType == 'interceptor'"></app-drone-map>
+      <!-- <app-map *ngIf="missionType == 'recon' || missionType == 'interceptor'"></app-map> -->
       <!-- <div class="no-data" > -->
       <p
         *ngIf="missionType != 'recon' && missionType != 'interceptor'"

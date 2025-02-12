@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { interval, Subscription } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { MatCardModule } from "@angular/material/card";
@@ -10,6 +10,8 @@ import { JsonPipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { MissionControlComponent } from "../mission-control/mission-control.component";
 import { MetaDataComponent } from "../meta-data/meta-data.component";
+import { MapComponent } from "../map/map.component";
+import { SseClient } from 'ngx-sse-client';
 
 interface Alert {
   id: number;
@@ -28,34 +30,40 @@ interface Alert {
     JsonPipe,
     MatButtonModule,
     MissionControlComponent,
-    MetaDataComponent
+    MetaDataComponent,
+    MapComponent
   ],
   templateUrl: "./live-feed-wrapper.component.html",
-  styleUrls: ["./live-feed-wrapper.component.css"], // Corrected styleUrls
+  styleUrls: ["./live-feed-wrapper.component.css"],
 })
 export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
   alerts: Alert[] = [];
   private alertSubscription!: Subscription;
-  private apiUrl = "http://127.0.0.1:8000/api/alerts/bss1"; // Replace with your actual API endpoint
-  currentTime: string;
-  oneMinuteBefore: string;
+  private apiUrl = "http://127.0.0.1:1000/api/alerts";
+  // currentTime: string;
+  // oneMinuteBefore: string;
 
-  constructor(private http: HttpClient) {
-    const now = new Date();
-    this.currentTime = now.toISOString(); // Current time in ISO format
+  constructor(private sseClient: SseClient) {
+    // const now = new Date();
+    // this.currentTime = now.toISOString(); 
 
-    const oneMinuteAgo = new Date(now.getTime() - 60 * 1000); // Subtract 1 minute (60 seconds * 1000 milliseconds)
-    this.oneMinuteBefore = oneMinuteAgo.toISOString();
+    // const oneMinuteAgo = new Date(now.getTime() - 60 * 1000);
+    // this.oneMinuteBefore = oneMinuteAgo.toISOString();
   }
 
   ngOnInit(): void {
-    // Fetch notifications every 10 seconds
-    this.alertSubscription = interval(5000)
-      .pipe(switchMap(() => this.http.get<Alert[]>(this.apiUrl)))
-      .subscribe((newAlerts) => {
-        // Add new notifications to the stack
-        this.alerts.push(...newAlerts);
-      });
+    // Fetch notifications through sse events
+    const headers = new HttpHeaders();
+    this.sseClient.stream(this.apiUrl, { keepAlive: true, reconnectionDelay: 1_000, responseType: 'event' }, { headers }, 'GET').subscribe((event) => {
+      if (event.type === 'error') {
+        const errorEvent = event as ErrorEvent;
+        console.error(errorEvent.error, errorEvent.message);
+      } else {
+        const messageEvent = event as MessageEvent;
+        this.alerts.push(messageEvent.data);
+        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+      }
+    });
   }
 
   dismissAlert(alertId: number): void {

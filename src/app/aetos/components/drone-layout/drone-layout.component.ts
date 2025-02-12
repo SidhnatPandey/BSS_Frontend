@@ -7,6 +7,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import Swal from "sweetalert2";
+import { MapComponent } from "../map/map.component";
+import { DroneMapComponent } from "../drone-map/drone-map.component";
 
 interface Drone {
   name: string;
@@ -24,6 +26,8 @@ interface Drone {
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
+    MapComponent,
+    DroneMapComponent,
   ],
   templateUrl: "./drone-layout.component.html",
   styleUrl: "./drone-layout.component.css",
