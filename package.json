@@ -46,7 +46,7 @@
     "ng-apexcharts": "^1.11.0",
     "ng-circle-progress": "^1.7.1",
     "ngx-pagination": "^6.0.3",
-    "ngx-sse-client": "^19.0.0",
+    "ngx-sse-client": "^3.0.0",
     "proj4": "^2.14.0",
     "proj4leaflet": "^1.0.2",
     "rxjs": "~7.8.0",
