@@ -39,7 +39,7 @@ interface Alert {
 export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
   alerts: Alert[] = [];
   private alertSubscription!: Subscription;
-  private apiUrl = "http://127.0.0.1:1000/api/alerts";
+  private apiUrl = "https://bssbackend.test.devapp.nyc1.initz.run/api/alerts";
   // currentTime: string;
   // oneMinuteBefore: string;
 

@@ -27,11 +27,11 @@ export class LiveFeedComponent {
   ];
   leftItems = ["Main Entrance", "Parking Lot", "Loading Dock", "Backyard"];
   selectedSensor: { name: string; data: string } | null = null;
-  videoStreamUrl: string = "http://127.0.0.1:8000/api/video_feed";
-  videoStreamUrlRajak: string = "http://127.0.0.1:8000/api/ptz_video_feed";
-  videoStreamUrlPtz: string = "http://127.0.0.1:8000/api/ptz_video_feed";
-  videoStreamUrlHsti: string = "http://127.0.0.1:8000/api/thermal_video_feed";
-  videoStreamUrlLorros: string = "http://127.0.0.1:8000/api/ptz_video_feed";
+  videoStreamUrl: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/video_feed";
+  videoStreamUrlRajak: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
+  videoStreamUrlPtz: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
+  videoStreamUrlHsti: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/thermal_video_feed";
+  videoStreamUrlLorros: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
 
   ngOnInit(): void {
     // Pre-select PTZ sensor as the default

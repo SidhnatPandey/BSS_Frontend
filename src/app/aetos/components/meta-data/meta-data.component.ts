@@ -15,7 +15,7 @@ export class MetaDataComponent implements OnInit {
 
   currentTime: string | undefined;
   oneMinuteBefore: string | undefined;
-  private apiUrl = "http://127.0.0.1:1000/api/metadata";
+  private apiUrl = "https://bssbackend.test.devapp.nyc1.initz.run/api/metadata";
   metadata: any = [];
 
   constructor(private sseClient : SseClient) {
