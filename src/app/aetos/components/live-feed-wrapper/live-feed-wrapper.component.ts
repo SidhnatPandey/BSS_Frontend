@@ -37,9 +37,9 @@ interface Alert {
   styleUrls: ["./live-feed-wrapper.component.css"],
 })
 export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
-  alerts: Alert[] = [];
-  private alertSubscription!: Subscription;
   private apiUrl = "https://bssbackend.test.devapp.nyc1.initz.run/api/alerts";
+  alerts: Alert[] = [];
+  alertSubscription: any;
   // currentTime: string;
   // oneMinuteBefore: string;
 
@@ -60,7 +60,8 @@ export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
         console.error(errorEvent.error, errorEvent.message);
       } else {
         const messageEvent = event as MessageEvent;
-        this.alerts.push(messageEvent.data);
+        this.alerts.push(JSON.parse(messageEvent.data));
+        console.log(this.alerts);
         console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
       }
     });
