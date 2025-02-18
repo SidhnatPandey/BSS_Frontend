@@ -11,14 +11,14 @@ import { MatButtonModule } from "@angular/material/button";
 import { MissionControlComponent } from "../mission-control/mission-control.component";
 import { MetaDataComponent } from "../meta-data/meta-data.component";
 import { MapComponent } from "../map/map.component";
-import { SseClient } from 'ngx-sse-client';
-
+import { SseClient } from "ngx-sse-client";
+ 
 interface Alert {
   id: number;
   message: string;
   timestamp: string;
 }
-
+ 
 @Component({
   selector: "app-live-feed-wrapper",
   standalone: true,
@@ -31,46 +31,57 @@ interface Alert {
     MatButtonModule,
     MissionControlComponent,
     MetaDataComponent,
-    MapComponent
+    MapComponent,
   ],
   templateUrl: "./live-feed-wrapper.component.html",
   styleUrls: ["./live-feed-wrapper.component.css"],
 })
 export class LiveFeedWrapperComponent implements OnInit, OnDestroy {
-  private apiUrl = "https://bssbackend.test.devapp.nyc1.initz.run/api/alerts";
   alerts: Alert[] = [];
-  alertSubscription: any;
+  private alertSubscription!: Subscription;
+  private apiUrl = "http://127.0.0.1:1000/api/alerts";
   // currentTime: string;
   // oneMinuteBefore: string;
-
+ 
   constructor(private sseClient: SseClient) {
     // const now = new Date();
-    // this.currentTime = now.toISOString(); 
-
+    // this.currentTime = now.toISOString();
     // const oneMinuteAgo = new Date(now.getTime() - 60 * 1000);
     // this.oneMinuteBefore = oneMinuteAgo.toISOString();
   }
-
+ 
   ngOnInit(): void {
-    // Fetch notifications through sse events
-    const headers = new HttpHeaders();
-    this.sseClient.stream(this.apiUrl, { keepAlive: true, reconnectionDelay: 1_000, responseType: 'event' }, { headers }, 'GET').subscribe((event) => {
-      if (event.type === 'error') {
-        const errorEvent = event as ErrorEvent;
-        console.error(errorEvent.error, errorEvent.message);
-      } else {
-        const messageEvent = event as MessageEvent;
-        this.alerts.push(JSON.parse(messageEvent.data));
-        console.log(this.alerts);
-        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
-      }
-    });
+    this.getAlerts();
   }
-
+ 
+  getAlerts() {
+    const headers = new HttpHeaders();
+    this.sseClient
+      .stream(
+        this.apiUrl,
+        { keepAlive: true, reconnectionDelay: 1_000, responseType: "event" },
+        { headers },
+        "GET"
+      )
+      .subscribe((event) => {
+        if (event.type === "error") {
+          const errorEvent = event as ErrorEvent;
+          console.error(errorEvent.error, errorEvent.message);
+        } else {
+          const messageEvent = event as MessageEvent;
+          this.alerts.push(JSON.parse(messageEvent.data));
+          console.log(this.alerts);
+          console.info(
+            `SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`
+          );
+        }
+      });
+  }
+ 
   dismissAlert(alertId: number): void {
     this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
   }
-
+ 
   ngOnDestroy(): void {
     // Clean up the subscription
     if (this.alertSubscription) {

@@ -15,80 +15,80 @@ export class MetaDataComponent implements OnInit {
 
   currentTime: string | undefined;
   oneMinuteBefore: string | undefined;
-  private apiUrl = "https://bssbackend.test.devapp.nyc1.initz.run/api/metadata";
+  private apiUrl = "http://127.0.0.1:1000/api/metadata";
   metadata: any = [];
   hhtiData: any[] = [];
   ptzData: any[] = [];
   hhtiDetectedObjects: string = 'No objects detected';
   ptzDetectedObjects: string = 'No objects detected';
 
-  dummy_data = [
-      {
-         "sensor_name":"TRINETRA-DRONE",
-         "data":[
-            {
-               "id":6,
-               "sensor_name":"TRINETRA-DRONE",
-               "sensor_id":"DRONE@SU123",
-               "object_count":2,
-               "timestamp":"2025-02-17T12:48:37.447095",
-               "detected_objects":[
-                  "2soldier"
-               ],
-               "sensor_type":"UAV",
-               "target_type":"2soldier",
-               "target_sub_type":"",
-               "target_cl":"T69",
-               "activity_type":"",
-               "activity_sub_type":"",
-               "activity_cl":"",
-               "axis_bg":"",
-               "rg":"",
-               "lat":"",
-               "long":"",
-               "height":"",
-               "easting":"",
-               "northing":"",
-               "zone":""
-            }
-         ]
-      },
-      {
-         "sensor_name":"HHTI",
-         "data":[
-         ]
-      },
-      {
-         "sensor_name":"PTZ",
-         "data":[
-            {
-               "id":12,
-               "sensor_name":"PTZ",
-               "sensor_id":"PTZ@SU123",
-               "object_count":1,
-               "timestamp":"2025-02-17T12:51:07.229224",
-               "detected_objects":[
-                  "1soldier"
-               ],
-               "sensor_type":"UAV",
-               "target_type":"1soldier",
-               "target_sub_type":"",
-               "target_cl":"T69",
-               "activity_type":"",
-               "activity_sub_type":"",
-               "activity_cl":"",
-               "axis_bg":"",
-               "rg":"",
-               "lat":"",
-               "long":"",
-               "height":"",
-               "easting":"",
-               "northing":"",
-               "zone":""
-            }
-         ]
-      }
-   ]
+//   dummy_data = [
+//       {
+//          "sensor_name":"TRINETRA-DRONE",
+//          "data":[
+//             {
+//                "id":6,
+//                "sensor_name":"TRINETRA-DRONE",
+//                "sensor_id":"DRONE@SU123",
+//                "object_count":2,
+//                "timestamp":"2025-02-17T12:48:37.447095",
+//                "detected_objects":[
+//                   "2soldier"
+//                ],
+//                "sensor_type":"UAV",
+//                "target_type":"2soldier",
+//                "target_sub_type":"",
+//                "target_cl":"T69",
+//                "activity_type":"",
+//                "activity_sub_type":"",
+//                "activity_cl":"",
+//                "axis_bg":"",
+//                "rg":"",
+//                "lat":"",
+//                "long":"",
+//                "height":"",
+//                "easting":"",
+//                "northing":"",
+//                "zone":""
+//             }
+//          ]
+//       },
+//       {
+//          "sensor_name":"HHTI",
+//          "data":[
+//          ]
+//       },
+//       {
+//          "sensor_name":"PTZ",
+//          "data":[
+//             {
+//                "id":12,
+//                "sensor_name":"PTZ",
+//                "sensor_id":"PTZ@SU123",
+//                "object_count":1,
+//                "timestamp":"2025-02-17T12:51:07.229224",
+//                "detected_objects":[
+//                   "1soldier"
+//                ],
+//                "sensor_type":"UAV",
+//                "target_type":"1soldier",
+//                "target_sub_type":"",
+//                "target_cl":"T69",
+//                "activity_type":"",
+//                "activity_sub_type":"",
+//                "activity_cl":"",
+//                "axis_bg":"",
+//                "rg":"",
+//                "lat":"",
+//                "long":"",
+//                "height":"",
+//                "easting":"",
+//                "northing":"",
+//                "zone":""
+//             }
+//          ]
+//       }
+//    ]
 
   constructor(private sseClient : SseClient) {
     const now = new Date();
@@ -105,18 +105,15 @@ export class MetaDataComponent implements OnInit {
       if (event.type === 'error') {
         const errorEvent = event as ErrorEvent;
         console.error(errorEvent.error, errorEvent.message);
-        this.hhtiData = this.dummy_data.find((obj: any) => obj.sensor_name === 'HHTI')?.data || [];
-        this.ptzData = this.dummy_data.find((obj: any) => obj.sensor_name === 'PTZ')?.data || [];
       } else {
         const messageEvent = event as MessageEvent;
         this.metadata = JSON.parse(messageEvent.data).object_metadata;
-        this.hhtiData = this.metadata.find((obj: any) => obj.sensor_name === 'HHTI')?.data || [];
+      this.hhtiData = this.metadata.find((obj: any) => obj.sensor_name === 'HHTI')?.data || [];
         this.ptzData = this.metadata.find((obj: any) => obj.sensor_name === 'PTZ')?.data || [];
+        this.hhtiDetectedObjects = this.computeDetectedObjects(this.hhtiData);
+        this.ptzDetectedObjects = this.computeDetectedObjects(this.ptzData);
       }
     });
-
-    this.hhtiDetectedObjects = this.computeDetectedObjects(this.hhtiData);
-    this.ptzDetectedObjects = this.computeDetectedObjects(this.ptzData);
   }
 
   private computeDetectedObjects(data: any[]): string {

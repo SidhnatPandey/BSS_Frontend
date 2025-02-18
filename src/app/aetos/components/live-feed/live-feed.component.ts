@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, model } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
+import {Modal} from 'bootstrap';
 
 export interface Tile {
   color: string;
@@ -27,12 +28,12 @@ export class LiveFeedComponent {
   ];
   leftItems = ["Main Entrance", "Parking Lot", "Loading Dock", "Backyard"];
   selectedSensor: { name: string; data: string } | null = null;
-  videoStreamUrl: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/video_feed";
-  videoStreamUrlRajak: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
-  videoStreamUrlPtz: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
-  videoStreamUrlHsti: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/thermal_video_feed";
-  videoStreamUrlLorros: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/ptz_video_feed";
-
+  videoStreamUrl: string = "http://127.0.0.1:1000/api/video_feed";
+  videoStreamUrlRajak: string = "http://127.0.0.1:1000/api/ptz_video_feed";
+  videoStreamUrlPtz: string = "http://127.0.0.1:1000/api/ptz_video_feed";
+  videoStreamUrlHsti: string = "http://127.0.0.1:1000/api/thermal_video_feed";
+  videoStreamUrlLorros: string = "http://127.0.0.1:1000/api/ptz_video_feed";
+  commonDialogUrl: string = "";
   ngOnInit(): void {
     // Pre-select PTZ sensor as the default
     this.selectSensor({ name: 'PTZ', data: 'Live data from PTZ' });
@@ -53,7 +54,20 @@ export class LiveFeedComponent {
     }
   }
 
-  openDialog(){
-    console.log("dialog opened")
+  openDialog(sensor: string){
+    if (sensor === "RAJAK") {
+      this.commonDialogUrl = this.videoStreamUrlRajak;
+    } else if (sensor === "PTZ") {
+      this.commonDialogUrl = this.videoStreamUrlPtz;
+    } else if (sensor === "HHTI") {
+      this.commonDialogUrl = this.videoStreamUrlHsti;
+    } else if (sensor === "LORROS") {
+      this.commonDialogUrl = this.videoStreamUrlLorros;
+    } else {
+      this.commonDialogUrl = this.videoStreamUrlPtz;
+    }
+    const element = document.getElementById("common_vedio_dialog")!;
+    const commonModal = new Modal(element);
+    commonModal.show();
   }
 }

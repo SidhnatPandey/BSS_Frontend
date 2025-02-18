@@ -49,7 +49,7 @@ export class DroneLayoutComponent {
   };
 
   selectedDrone: Drone | null = null;
-  videoStreamUrl: string = "https://bssbackend.test.devapp.nyc1.initz.run/api/video_feed";
+  videoStreamUrl: string = "hhttp://127.0.0.1:1000/api/video_feed";
   readonly dialog = inject(MatDialog);
   missionType: string = "";
   hideBtn: boolean = false;

@@ -25,8 +25,8 @@
             <div class="child-sensor">
               <h5 style="font-weight: bold;">RAZAK</h5>
               <p>
-                2 soldiers in field of view <br />
-                <span class="small-text">
+                {{ ptzDetectedObjects }} in field of view<br />
+                <span *ngIf="ptzDetectedObjects !== 'No objects detected'" class="small-text">
                   <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
                  <strong>End</strong>: {{ currentTime | date : "short" }}</span
                 >
@@ -45,8 +45,8 @@
             <div class="child-sensor">
               <h5 style="font-weight: bold;">LORROS</h5>
               <p>
-                2 soldier in field of view<br />
-                <span class="small-text">
+                {{ ptzDetectedObjects }} in field of view<br />
+                <span *ngIf="ptzDetectedObjects !== 'No objects detected'" class="small-text">
                   <strong>Start</strong>: {{ oneMinuteBefore | date : "short" }} <br />
                  <strong>End</strong>: {{ currentTime | date : "short" }}</span
                 >
