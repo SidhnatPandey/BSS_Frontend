@@ -1,78 +1,6 @@
-
-<!-- <div class="dashboard-container">
-  <div class="summary-grid">
-    <mat-card class="summary-card">
-      <div class="card-content">
-        <div class="icon-column">
-          <img
-            src="assets/icons/location.png"
-            class="summary-icon location-icon"
-            alt="Icon"
-          />
-        </div>
-        <div class="text-column">
-          <h3>Locations</h3>
-          <p>6</p>
-        </div>
-      </div>
-    </mat-card>
-    <mat-card class="summary-card">
-      <div class="card-content">
-        <div class="icon-column">
-          <img
-            class="summary-icon alert-icon"
-            src="assets/icons/notification.png"
-            [ngClass]="{ shake: alertCount > 0 }"
-            alt="Icon"
-          />
-        </div>
-        <div class="text-column">
-          <h3>Active Alerts</h3>
-          <p>{{ alertCount }}</p>
-        </div>
-      </div>
-    </mat-card>
-    <mat-card class="summary-card">
-      <div class="card-content">
-        <div class="icon-column">
-          <img
-            src="assets/icons/task.png"
-            alt="Icon"
-            class="summary-icon mission-icon"
-          />
-        </div>
-        <div class="text-column">
-          <h3>Active Missions</h3>
-          <p>0</p>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <div class="photo-grid">
-    <mat-card
-      class="photo-card"
-      *ngFor="let photo of photos; let i = index"
-      (click)="navigateToLiveFeed(photo)"
-      [ngClass]="{ 'highlight-border': i === activeAlertIndex, 'shake': i === activeAlertIndex }"
-    >
-      <div class="photo-wrapper ">
-        <img [src]="photo.url" [alt]="photo.label" />
-        
-        <p class="timer-overlay">Last update {{ photo.lastUpdate }} sec ago</p>
-          <h2 class="overlay">{{ photo.label }}</h2>
-        <div class="alert-overlay" *ngIf="i === activeAlertIndex">
-          <div class="alert-animation">
-            <p style="margin-top: 50px;" >ALERT - Movement Detected</p></div>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-</div> -->
-
- 
 <div class="container-fluid p-4">
   <!-- <h1 class="dashboard-title">Border Surveillance System</h1> -->
- 
+
   <!-- Stats Row -->
   <div class="row mb-4 g-4">
     <div class="col-md-4">
@@ -80,10 +8,10 @@
         <div class="card-body d-flex align-items-center">
           <div class="stats-icon locations text-white mb-2">
             <img
-            src="assets/icons/geo-icon.png"
-            class="summary-icon location-icon"
-            alt="Icon"
-          />
+              src="assets/icons/geo-icon.png"
+              class="summary-icon location-icon"
+              alt="Icon"
+            />
           </div>
           <div>
             <div class="stats-value">{{ locations.length }}</div>
@@ -97,11 +25,11 @@
         <div class="card-body d-flex align-items-center">
           <div class="stats-icon alerts text-white mb-1">
             <img
-            class="summary-icon alert-icon"
-            src="assets/icons/alert.png"
-            [ngClass]="{ shake: alertCount > 0 }"
-            alt="Icon"
-          />
+              class="summary-icon alert-icon"
+              src="assets/icons/alert.png"
+              [ngClass]="{ shake: alertCount > 0 }"
+              alt="Icon"
+            />
           </div>
           <div>
             <div class="stats-value">2</div>
@@ -115,10 +43,10 @@
         <div class="card-body d-flex align-items-center">
           <div class="stats-icon missions text-white">
             <img
-            src="assets/icons/image.png"
-            alt="Icon"
-            class="summary-icon mission-icon"
-          />
+              src="assets/icons/image.png"
+              alt="Icon"
+              class="summary-icon mission-icon"
+            />
           </div>
           <div>
             <div class="stats-value">4</div>
@@ -128,15 +56,22 @@
       </div>
     </div>
   </div>
- 
+
   <!-- Locations Grid -->
   <div class="row g-4">
-    <div class="col-md-4" style="margin-top: 20px;" *ngFor="let bss of locations; let i = index">
+    <div
+      class="col-md-4"
+      style="margin-top: 20px"
+      *ngFor="let bss of locations; let i = index"
+    >
       <div
         class="location-card shadow"
-        style="cursor: pointer;"
-        (click) = "navigateToLiveFeed(bss)"
-        [ngClass]="{ 'highlight-border': i === activeAlertIndex, 'shake': i === activeAlertIndex }"
+        style="cursor: pointer"
+        (click)="navigateToLiveFeed(bss)"
+        [ngClass]="{
+          'highlight-border': i === activeAlertIndex,
+          shake: i === activeAlertIndex
+        }"
         [style.background-image]="'url(' + bss.image + ')'"
       >
         <div class="last-update">
@@ -157,6 +92,136 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating Action Button -->
+  <button
+    type="button"
+    class="floating-button"
+    (click)="handleButtonClick()"
+    data-toggle="modal"
+    data-target="#dashboardFormModal"
+    data-bs-toggle="tooltip"
+    data-bs-placement="left"
+    title="Add BSS"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+
+  <div
+    class="modal fade"
+    id="dashboardFormModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="dashboard-form"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add BSS</h5>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="bssForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="bssName">BSS Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="bssName"
+                formControlName="bssName"
+                placeholder="Enter BSS Name"
+              />
+              <div
+                *ngIf="
+                  bssForm.get('bssName')?.invalid &&
+                  bssForm.get('bssName')?.touched
+                "
+                class="text-danger"
+              >
+                BSS Name is required and should be alphanumeric.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bssLatitude">BSS Latitude</label>
+              <input
+                type="text"
+                class="form-control"
+                id="bssLatitude"
+                formControlName="bssLatitude"
+                placeholder="Enter Latitude"
+              />
+              <div
+                *ngIf="
+                  bssForm.get('bssLatitude')?.invalid &&
+                  bssForm.get('bssLatitude')?.touched
+                "
+                class="text-danger"
+              >
+                Latitude is required and should be a valid number.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bssLongitude">BSS Longitude</label>
+              <input
+                type="text"
+                class="form-control"
+                id="bssLongitude"
+                formControlName="bssLongitude"
+                placeholder="Enter Longitude"
+              />
+              <div
+                *ngIf="
+                  bssForm.get('bssLongitude')?.invalid &&
+                  bssForm.get('bssLongitude')?.touched
+                "
+                class="text-danger"
+              >
+                Longitude is required and should be a valid number.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bssImage">BSS Image</label>
+              <input
+                type="file"
+                class="form-control"
+                id="bssImage"
+                (change)="onFileChange($event)"
+                accept="image/*"
+              />
+              <div
+                *ngIf="
+                  bssForm.get('bssImage')?.invalid &&
+                  bssForm.get('bssImage')?.touched
+                "
+                class="text-danger"
+              >
+                An image file is required.
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                #closeBtn
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="bssForm.invalid"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
- 
- 
