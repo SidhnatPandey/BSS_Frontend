@@ -91,7 +91,7 @@ export class MapComponent implements AfterViewInit {
   
           // Add a marker at the user's location with accuracy information
           const marker = L.marker(userLocation).addTo(this.map);
-          marker.bindPopup(`You are here`).openPopup();
+          marker.bindPopup(`Gurugram`).openPopup();
         },
         (error: GeolocationPositionError) => {
           console.error('Error getting location: ', error);

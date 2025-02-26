@@ -90,6 +90,26 @@ export class MetaDataComponent implements OnInit {
 //       }
 //    ]
 
+  expandedSensor: string | null = null;
+
+  toggleExpand(sensor: string) {
+    this.expandedSensor = this.expandedSensor === sensor ? null : sensor;
+  }
+  //placeholder methods
+  getSensorAccuracy(sensor: string): number {
+    const accuracyData = { PTZ: 90, RAZAK: 85, HHTI: 88, LORROS: 92 };
+    return accuracyData[sensor as keyof typeof accuracyData] || 0;
+  }
+
+  getSensorStatus(sensor: string): string {
+    const statusData = { PTZ: 'Active', RAZAK: 'Inactive', HHTI: 'Maintenance', LORROS: 'Active' };
+    return statusData[sensor as keyof typeof statusData] || 'Unknown';
+  }
+
+  isMonitoringActive(sensor: string): boolean {
+    const monitoringData = { PTZ: true, RAZAK: false, HHTI: true, LORROS: true };
+    return monitoringData[sensor as keyof typeof monitoringData] || false;
+  }
   constructor(private sseClient : SseClient) {
     const now = new Date();
     this.currentTime = now.toISOString(); // Current time in ISO format

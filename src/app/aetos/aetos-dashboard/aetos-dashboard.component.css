@@ -402,7 +402,9 @@ img {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 0.5rem;
+  height: 60px;
+  width: 60px;
+  font-size: 24px;
   background-color: #5F65D5;
   color: white;
   border: 5px solid #5F65D5;

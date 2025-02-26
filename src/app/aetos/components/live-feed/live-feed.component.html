@@ -1,63 +1,150 @@
-<div class="box">
-  <div class="left-section">
-    <div class="part" [class.selected]="selectedSensor?.name === 'PTZ'"
-      (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })">
+<div class="box" style="margin-top: 10px">
+  <div class="card left-section">
+    
+      <div class="heading" style="background: linear-gradient(135deg, #4b5320, #6b8e23, #556b2f, #3e4b2b); color: white; margin-bottom: -10px"><h5>Sensors</h5></div>
+      <div style="overflow-y: scroll;">
+        <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'PTZ'"
+      (click)="selectSensor({ name: 'PTZ', data: 'Live data from PTZ' })"
+    >
       <img [src]="videoStreamUrlPtz" alt="Live Stream" class="video-side" />
       <div class="overlay">
         <span>PTZ</span>
-        <i class="fa-solid fa-expand"  data-toggle="modal" data-target="#common_vedio_dialog" (click)="openDialog('PTZ');$event.stopPropagation();"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          data-target="#common_vedio_dialog"
+          (click)="openDialog('PTZ'); $event.stopPropagation()"
+        ></i>
       </div>
     </div>
-    <div class="part" [class.selected]="selectedSensor?.name === 'HSTI'"
-      (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })">
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'HSTI'"
+      (click)="selectSensor({ name: 'HSTI', data: 'Live data from HSTI' })"
+    >
       <img [src]="videoStreamUrlHsti" alt="Live Stream" class="video-side" />
       <div class="overlay">
         <span>HHTI</span>
-        <i class="fa-solid fa-expand" data-toggle="modal" (click)="$event.stopPropagation(); openDialog('HHTI')" data-target="#common_vedio_dialog"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          (click)="$event.stopPropagation(); openDialog('HHTI')"
+          data-target="#common_vedio_dialog"
+        ></i>
       </div>
     </div>
-    <div class="part" [class.selected]="selectedSensor?.name === 'RAJAK'"
-      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })">
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'RAJAK'"
+      (click)="selectSensor({ name: 'RAJAK', data: 'Live data from RAJAK' })"
+    >
       <img [src]="videoStreamUrlRajak" alt="Live Stream" class="video-side" />
       <div class="overlay">
         <span>RAZAK</span>
-        <i class="fa-solid fa-expand" data-toggle="modal" (click)="$event.stopPropagation(); openDialog('RAZAK')" data-target="#RAZAK_vedio_dialog"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          (click)="$event.stopPropagation(); openDialog('RAZAK')"
+          data-target="#RAZAK_vedio_dialog"
+        ></i>
       </div>
     </div>
-    <div class="part" [class.selected]="selectedSensor?.name === 'LORROS'"
-      (click)="selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })">
-      <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'LORROS'"
+      (click)="
+        selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
+      "
+    >
+      <img
+        [src]="videoStreamUrlLorros"
+        alt="Live Stream"
+        class="video-side"
+      />
       <div class="overlay">
         <span>LORROS</span>
-        <i class="fa-solid fa-expand" data-toggle="modal" (click)="$event.stopPropagation(); openDialog('LORROS')" data-target="#LORROS_vedio_dialog"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          (click)="$event.stopPropagation(); openDialog('LORROS')"
+          data-target="#LORROS_vedio_dialog"
+        ></i>
       </div>
     </div>
-    <div class="part" [class.selected]="selectedSensor?.name === 'UAV'"
-      (click)="selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })">
-      <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'UAV'"
+      (click)="
+        selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
+      "
+    >
+      <img
+        [src]="videoStreamUrlLorros"
+        alt="Live Stream"
+        class="video-side"
+      />
       <div class="overlay">
         <span>UAV</span>
-        <i class="fa-solid fa-expand" data-toggle="modal" (click)="$event.stopPropagation(); openDialog('LORROS')" data-target="#LORROS_vedio_dialog"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          (click)="$event.stopPropagation(); openDialog('LORROS')"
+          data-target="#LORROS_vedio_dialog"
+        ></i>
       </div>
     </div>
-    <div class="part" [class.selected]="selectedSensor?.name === 'UAV'"
-      (click)="selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })">
-      <img [src]="videoStreamUrlLorros" alt="Live Stream" class="video-side" />
+    <div
+      class="part"
+      [class.selected]="selectedSensor?.name === 'UAV'"
+      (click)="
+        selectSensor({ name: 'LORROS', data: 'Live data from LORROS' })
+      "
+    >
+      <img
+        [src]="videoStreamUrlLorros"
+        alt="Live Stream"
+        class="video-side"
+      />
       <div class="overlay">
         <span>UAV</span>
-        <i class="fa-solid fa-expand" data-toggle="modal" (click)="$event.stopPropagation(); openDialog('LORROS')" data-target="#LORROS_vedio_dialog"></i>
+        <i
+          class="fa-solid fa-expand"
+          data-toggle="modal"
+          (click)="$event.stopPropagation(); openDialog('LORROS')"
+          data-target="#LORROS_vedio_dialog"
+        ></i>
       </div>
     </div>
+      </div>
   </div>
   <div class="right-section">
-    <div *ngIf="isLoading" class="loader"></div>
-    <img [src]="videoStreamUrl" alt="Live Stream" class="video" />
+    <!-- <div *ngIf="isLoading" class="loader"></div> -->
+    <div class="card" style="min-height: 100%;">
+      <div class="heading" style="background: linear-gradient(135deg, #4b5320, #6b8e23, #556b2f, #3e4b2b); color: white;
+"><h5>{{selectedSensorTitle}} Live Feed</h5></div>
+      <!-- <hr style="margin: 0;" /> -->
+      <img [src]="videoStreamUrl" alt="Live Stream" class="video" style="width: 100%;" />
+    </div>
   </div>
-  <div class="modal fade" id="common_vedio_dialog" tabindex="-1" role="dialog" aria-labelledby="LORROS_vedio_dialog" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="common_vedio_dialog"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="LORROS_vedio_dialog"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

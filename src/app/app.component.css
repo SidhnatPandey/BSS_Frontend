@@ -1,9 +1,7 @@
 .background-image{
-    /* background-image: url('../../src/assets/bg3.png'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #EFEEF1;
     height: 100vh;
     width: 100vw;
     /* overflow: scroll; */

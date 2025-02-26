@@ -1,6 +1,5 @@
 /* Container for mission control */
 .metabutton-container {
-  background-color: #1f1f1f;
   color: antiquewhite;
   display: flex;
   flex-direction: column;
@@ -14,8 +13,8 @@
 /* Header styling */
 .mission-header {
   width: 100%;
-  background: black;
-  color: white;
+  background-color: #F2F0F0;
+  /* color: white; */
   padding: 10px;
   border-radius: 4px;
   display: flex;
@@ -27,6 +26,7 @@
 .mission-header .mission-title {
   font-size: 18px;
   font-weight: bold;
+  /* color: #000; */
 }
 
 .mission-header .mission-details {
@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: row;
   width: 30%;
-  gap: 10px;
+  gap: 5px;
   padding: 0.5rem;
   justify-content: center;
 }
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
 }
 
 .mission-btn {
@@ -81,7 +81,7 @@
 
 .mission-btn[color="primary"] {
   background-color: #1976d2;
-  color: white;
+  /* color: white; */
 }
 
 .mission-btn[color="success"] {
@@ -104,8 +104,8 @@
 .incident-report {
   font-family: Arial, sans-serif;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 8px; */
   background-color: #f9f9f9;
   overflow-y: auto;
   max-height: 240px;

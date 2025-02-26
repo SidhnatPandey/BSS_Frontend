@@ -20,6 +20,7 @@ export interface Tile {
 })
 export class LiveFeedComponent {
   isLoading: boolean = false;
+  selectedSensorTitle: string = '';
   tiles: Tile[] = [
     { text: "One", cols: 3, rows: 1, color: "lightblue" },
     { text: "Two", cols: 1, rows: 2, color: "lightgreen" },
@@ -37,18 +38,23 @@ export class LiveFeedComponent {
   ngOnInit(): void {
     // Pre-select PTZ sensor as the default
     this.selectSensor({ name: 'PTZ', data: 'Live data from PTZ' });
+    this.selectedSensorTitle = 'PTZ';
     setTimeout(() => this.isLoading = false, 3000);
   }
   selectSensor(sensor: { name: string; data: string }) {
     this.selectedSensor = sensor;
     if (sensor.name === "RAJAK") {
       this.videoStreamUrl = this.videoStreamUrlRajak;
+      this.selectedSensorTitle = 'RAJAK';
     } else if (sensor.name === "PTZ") {
       this.videoStreamUrl = this.videoStreamUrlPtz;
+      this.selectedSensorTitle = 'PTZ';
     } else if (sensor.name === "HSTI") {
       this.videoStreamUrl = this.videoStreamUrlHsti;
+      this.selectedSensorTitle = 'HHTI';
     } else if (sensor.name === "LORROS") {
       this.videoStreamUrl = this.videoStreamUrlLorros;
+      this.selectedSensorTitle = 'LORROS';
     } else {
       this.videoStreamUrl = this.videoStreamUrlPtz;
     }

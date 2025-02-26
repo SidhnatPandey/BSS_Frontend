@@ -1,5 +1,6 @@
-<div class="alignBtnColumn">
-  <div class="mission-header header">
+<div class="alignBtnColumn card" style="margin-left: 1px;">
+  <div class="mission-header header" style="background: linear-gradient(135deg, #4b5320, #6b8e23, #556b2f, #3e4b2b); color: white;
+">
     <span class="mission-title">MISSION CONTROL</span>
     <span class="mission-details">
       Active Mission: N/A | Location: New Delhi (NCR)
@@ -7,9 +8,20 @@
     <!-- <button mat-raised-button color="accent" class="target-lock-btn">
       TARGET LOCK
     </button> -->
+    <!-- class="btn btn-danger mission-btn" -->
+    <button
+        type="button"
+        data-toggle="modal"
+        class="btn btn-danger"
+        data-target="#exampleModal"
+        style="height: 30px; font-size: 12px"
+      >
+        🚀 LAUNCH RECON DRONE
+      </button>
   </div>
+  <hr style="margin: 0;" />
   <div class="meta-section">
-    <div class="metabutton-group">
+    <!-- <div class="metabutton-group">
       <button
         type="button"
         class="mission-btn"
@@ -19,8 +31,6 @@
       >
         🚀 LAUNCH RECON DRONE
       </button>
-
-      <!-- Modal -->
       <div
         class="modal fade"
         id="exampleModal"
@@ -40,7 +50,6 @@
               <h5 class="modal-title" id="exampleModalLabel">
                 RECON DRONE MISSION
               </h5>
-              <!-- Button to toggle miniplayer mode -->
                <div>
               <button
                 type="button"
@@ -68,7 +77,53 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog custom-dialog"
+          style="padding: 0"
+          role="document"
+          [ngClass]="{ 'mini-player': isMiniPlayer }"
+        >
+          <div class="modal-content" style="background-color: #f2f6ff">
+            <div class="modal-header" style="background-color: #fce6c7">
+              <h5 class="modal-title" id="exampleModalLabel">
+                RECON DRONE MISSION
+              </h5>
+               <div>
+              <button
+                type="button"
+                class="btn btn-sm"
+                (click)="toggleMiniPlayer()"
+                aria-label="Toggle Miniplayer"
+              >
+                <img style="width: 1.5rem;" [src]="isMiniPlayer ? 'assets/icons/expand.png' : 'assets/icons/minimize.png'" />
+              </button>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            </div>
+            <div class="modal-body">
+              <app-drone-layout
+                [isMiniplayerMode]="isMiniPlayer"
+              ></app-drone-layout>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="live-vedio-analysis-section">
       <div class="incident-report">
         <h2 style="color: red; font-weight: bold">Incident Report</h2>
